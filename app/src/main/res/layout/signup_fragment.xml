@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.signup.SignupVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clsignupMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/plaza"
+        android:onClick="@{vm::onClicks}"
+        tools:context=".views.signup.SignUpFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gLineSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hello_valentina"
+            android:text="SignUp"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gLineSignup" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nScrollSigUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/tvSignup">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvSignup">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignupFirstName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="First Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSignupLastName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignupLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Last Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvSignupFirstName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvSignupFirstName"
+                    app:layout_constraintTop_toTopOf="@+id/tvSignupFirstName" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clSignupFirstName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/capsule_login_bg"
+                    app:layout_constraintEnd_toStartOf="@+id/clSignupLastName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignupFirstName">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etSignupFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:drawableStart="@drawable/ic_profile_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:hint="First Name"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.firstName}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clSignupLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/capsule_login_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/clSignupFirstName"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignupFirstName">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etSignupLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:drawableStart="@drawable/ic_profile_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:hint="Last Name"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.lastName}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <!--for Email-->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignupEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Email"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clSignupFirstName" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clSignupEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/capsule_login_bg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignupEmail">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etSignupEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_message_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.email}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--for password-->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignupPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Password"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clSignupEmail" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlSignupPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignupPassword"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSignupPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/capsule_login_bg"
+                        android:drawableStart="@drawable/ic_lock_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.password}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--for confirm password-->
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignupConfirmPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Confirm Password"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tlSignupPass" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlSignupConfirmPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintStart_toStartOf="@id/tvSignupConfirmPass"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignupConfirmPass"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSignupConfirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/capsule_login_bg"
+                        android:drawableStart="@drawable/ic_lock_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.confirmPassword}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/capsule_login_button"
+            android:fontFamily="@font/inter_bold"
+            android:onClick="@{vm::onClicks}"
+            android:text="Signup"
+            android:textAllCaps="false"
+            android:textColor="@color/light_black"
+            app:layout_constraintTop_toBottomOf="@+id/nScrollSigUp" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gLineSignUpWantLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSignupWantLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/inter_semibold"
+            android:gravity="center_horizontal"
+            android:onClick="@{vm::onClicks}"
+            android:text="Already have an account? Login"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gLineSignUpWantLogin" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

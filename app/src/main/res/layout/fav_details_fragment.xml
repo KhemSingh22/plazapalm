@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.favourites.favdetails.FavDetailsVM" />
+
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFavDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Vikas"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivFavDetailsBackBtn"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="start"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_back_arrow_button"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivFavDetailsOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_profile_view_dots_icon"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clFavDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_190sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivFavDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/electrician_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFavDetailsEmptyHeart"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_gravity="start"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:onClick="@{vm::onClicks}"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/ic_heart_icon"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFavDetailsFilledHeart"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:onClick="@{vm::onClicks}"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/ic_heart_filled_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFavDetailsAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="Los Angeles, CA"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFavCityAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="#123, 8th floor,  street 4, Los Angeles, CA"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toTopOf="@id/tvFavDetailsAddress"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFavDetailsDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="2 miles"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvFavDetailsAddress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvFavDetailsAddress" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10sdp"
+                        android:background="@drawable/dash_board_items_gradient_top"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/dash_board_items_gradient"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clFavDetailsLikeDislike"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/clFavDetails">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFavDetailsLike"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:src="@drawable/like_unfilled_image"
+                        app:layout_constraintEnd_toStartOf="@+id/tvFavDetailsLikeCounts"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFavDetailsLikeCounts"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="0"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsLike"
+                        app:layout_constraintStart_toEndOf="@id/ivFavDetailsLike"
+                        app:layout_constraintTop_toTopOf="@id/ivFavDetailsLike" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFavDetailsDislike"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:src="@drawable/ic_thumbs_down"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsLike"
+                        app:layout_constraintStart_toEndOf="@id/tvFavDetailsLikeCounts"
+                        app:layout_constraintTop_toTopOf="@id/ivFavDetailsLike" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFavDetailsDisLikeCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="0"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsDislike"
+                        app:layout_constraintStart_toEndOf="@id/ivFavDetailsDislike"
+                        app:layout_constraintTop_toTopOf="@id/ivFavDetailsDislike" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFavTotalLikedCounts"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:visibility="gone"
+                        android:onClick="@{vm::onClicks}"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/ic_heart_filled_icon"
+                        app:layout_constraintStart_toEndOf="@id/tvFavDetailsDisLikeCount"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFavHeartFilledCounts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="0"
+                        android:visibility="gone"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsDislike"
+                        app:layout_constraintStart_toEndOf="@id/ivFavTotalLikedCounts"
+                        app:layout_constraintTop_toTopOf="@id/ivFavDetailsDislike" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFavDetailsChats"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:onClick="@{vm::onClicks}"
+                        android:src="@drawable/ic_dark_blue_chat_icon"
+                        app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsLike"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/ivFavDetailsLike" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFavDetailsName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Vikas Panchal"
+                    android:textColor="@color/light_black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clFavDetailsLikeDislike" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFavDetailsName">
+                    <!--layout Description 1-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clVEditProDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/forgot_email_bg"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/etVEditProDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Lorem ipsum dolor sit amet,consectetur adipiscing elit. Quis in dolor euismod suscipit nibh facilisi.Tincidunt tristique tortor sit arcu sed ac malesuada. In ullamcorper varius senectus sagittis dapibus sed. Tellus dui dolor enim lorem."
+                            android:textColorHint="@color/light_black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ivFavOfDesc1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_5sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/clVEditProDescription">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/electrician_image" />
+                    </androidx.cardview.widget.CardView>
+
+
+                    <!--layout Description 2-->
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clFavOfDesc2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/forgot_email_bg"
+                        app:layout_constraintTop_toBottomOf="@id/ivFavOfDesc1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvFavOfDesc2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Lorem ipsum dolor sit amet,consectetur adipiscing elit.Quis in dolor euismod suscipit nibh facilisi.Tincidunt tristique tortor sit arcu sed ac malesuada. In ullamcorper varius senectus sagittis dapibus sed. Tellus dui dolor enim lorem."
+                            android:textColorHint="@color/light_black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--Recycler View (Videos ) -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVideos"
+                        setRecyclerAdapter="@{vm.videosAdapter}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toTopOf="@id/rvImages"
+                        app:layout_constraintTop_toBottomOf="@+id/clFavOfDesc2"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/view_profile_videos_list" />
+
+                    <!--RecyclerView For Images  -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvImages"
+                        setRecyclerAdapter="@{vm.imagesAdapter}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toTopOf="@id/clFavOfDesc3"
+                        app:layout_constraintTop_toBottomOf="@+id/rvVideos"
+                        tools:itemCount="2"
+                        tools:layout_editor_absoluteX="13dp"
+                        tools:listitem="@layout/view_profile_images_list" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clFavOfDesc3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/forgot_email_bg"
+                        app:layout_constraintTop_toBottomOf="@id/rvImages">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvFavOfDesc3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Lorem ipsum dolor sit amet,consectetur adipiscing elit. Quis in dolor euismod suscipit nibh facilisi. Tincidunt tristique tortor sit arcu sed ac malesuada. In ullamcorper varius senectus sagittis dapibus sed. Tellus dui dolor enim lorem."
+                            android:textColorHint="@color/light_black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvFavDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_5sdp"
+
+                        app:layout_constraintTop_toBottomOf="@+id/clFavOfDesc3">
+                        <fragment
+                            android:id="@+id/mapFragmentViewProfile"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/forgot_email_bg"
+                            android:layout_marginBottom="@dimen/_15sdp"
+                            app:layout_constraintTop_toBottomOf="@+id/ivFavOfDe" />
+                    </androidx.cardview.widget.CardView>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnBookingProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@drawable/ic_bluemix_button_bg"
+                        android:gravity="center"
+                        android:onClick="@{vm::onClicks}"
+                        android:paddingBottom="@dimen/_1sdp"
+                        android:text="Book"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cvFavDetails" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

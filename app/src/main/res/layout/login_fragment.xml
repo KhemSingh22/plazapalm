@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.login.LoginVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMainLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/plaza"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{vm::clicks}"
+        tools:context=".views.login.LoginFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/hello_valentina"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline9" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nScrollLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvLogin">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tvLogin">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLoginEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Email"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/clLoginEmail"
+                    app:layout_constraintStart_toStartOf="@id/clLoginEmail" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clLoginEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/capsule_login_bg"
+                    app:layout_constraintTop_toBottomOf="@id/tvLoginEmail">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_message_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.email}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLoginPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Password"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/tvLoginPassword"
+                    app:layout_constraintStart_toStartOf="@id/clLoginEmail"
+                    app:layout_constraintTop_toBottomOf="@id/clLoginEmail" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlLoginPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/tvLoginPassword"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLoginPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/capsule_login_bg"
+                        android:drawableStart="@drawable/ic_lock_icon"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.password}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLoginForgotPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:onClick="@{vm::clicks}"
+                    android:text="Forgot Password ?"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tlLoginPassword" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/capsule_login_button"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:onClick="@{vm::clicks}"
+            android:soundEffectsEnabled="true"
+            android:text="Go To Categories List "
+            android:textAllCaps="false"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/capsule_login_button"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:onClick="@{vm::clicks}"
+            android:soundEffectsEnabled="true"
+            android:text="Login "
+            android:textAllCaps="false"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@id/nScrollLogin">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConfirmBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/capsule_login_button"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:onClick="@{vm::clicks}"
+            android:soundEffectsEnabled="true"
+            android:text="Confirm Booking"
+            android:textAllCaps="false"
+            android:textColor="@color/light_black"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gLineLoginWantSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLoginWantSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:gravity="center_horizontal"
+            android:onClick="@{vm::clicks}"
+            android:text="Don’t have an account? Signup"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gLineLoginWantSignup" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

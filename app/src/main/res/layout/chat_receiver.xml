@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:gravity="start">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_2sdp"
+            android:maxWidth="@dimen/_350sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Today"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="@id/clReceiver"
+            android:textColor="#A4A3A3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/clReceiver"
+            android:id="@+id/tvReceiverDay"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/clReceiver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvReceiverDay"
+            android:background="@drawable/ic_receiver"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_2sdp"
+                android:maxWidth="@dimen/_350sdp"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:text="Neque porro quisquam est\nqui dolorem"
+                android:textColor="@color/black"
+                android:id="@+id/tvReceiver"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_2sdp"
+                android:text="1:30 pm"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:textColor="@color/chat_time_text_color"
+                app:layout_constraintStart_toEndOf="@id/tvReceiver"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvReceiver"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

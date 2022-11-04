@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.editprofile.EditProfileVM" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.editprofile.EditProfileFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:elevation="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                style="@style/Toolbar.TitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:elevation="0dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivEditProfileBackBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:background="@drawable/ic_back_icon_black"
+                    android:onClick="@{vm::onClicks}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivEditSettingBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/ic_setting_icon"
+                    android:backgroundTint="@color/black"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_8sdp" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clEditProfileMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:onClick="@{vm::onClicks}">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gLineEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.02" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clEditProfileCircular"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:onClick="@{vm::onClicks}"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/ic_image_circle_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/gLineEditProfile">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivEditProfile"
+                        setCircleImage="@{vm.profile_pic}"
+                        android:layout_width="@dimen/_90sdp"
+                        android:layout_height="@dimen/_90sdp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_place_holder"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_camera_icon_bg"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/clEditProfileCircular"
+                    app:layout_constraintEnd_toEndOf="@id/clEditProfileCircular"
+                    app:layout_constraintStart_toStartOf="@id/clEditProfileCircular"
+                    app:layout_constraintTop_toBottomOf="@id/clEditProfileCircular"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivEditProfileCamera"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@drawable/ic_camera_icon_bg"
+                    android:padding="@dimen/_5sdp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="-10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/clEditProfileCircular"
+                    app:layout_constraintEnd_toEndOf="@id/clEditProfileCircular"
+                    app:layout_constraintStart_toStartOf="@id/clEditProfileCircular"
+                    app:layout_constraintTop_toBottomOf="@id/clEditProfileCircular" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gLineEditProfileJi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEditFirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="@string/first_name"
+                    android:textColor="@color/light_black"
+                    app:layout_constraintStart_toStartOf="@+id/clEditProfile"
+                    app:layout_constraintTop_toBottomOf="@id/clEditProfileCircular" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tvEditFirstName">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/forgot_email_bg"
+                        android:hint="First Name"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.firstName}"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textColorHint="@color/gray"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="14sp"
+                        android:theme="@style/MyEditText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEditLastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="@string/edit_profile_last_name"
+                    android:textColor="@color/light_black"
+                    app:layout_constraintStart_toStartOf="@+id/clEditProfile"
+                    app:layout_constraintTop_toBottomOf="@id/clEditProfile" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clEditLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tvEditLastName">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/forgot_email_bg"
+                        android:hint="Last Name"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.lastName}"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textColorHint="@color/gray"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="14sp"
+                        android:theme="@style/MyEditText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tvBtnUpdateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:background="@drawable/ic_bluemix_button_bg"
+                    android:gravity="center"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingBottom="@dimen/_1sdp"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/clEditLastName" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

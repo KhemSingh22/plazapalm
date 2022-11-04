@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.advancesettings.pictures.ShowPictureVideoVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        tools:context=".views.advancesettings.pictures.ShowPictureVideoFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:fontFamily="@font/inter_medium"
+            android:onClick="@{vm::onClicks}"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_2sdp"
+            android:text="Close"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvClose">
+
+            <VideoView
+                android:id="@+id/vPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPlayBtn"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:onClick="@{vm::onClicks}"
+                android:src="@drawable/ic_play_icon"
+                app:layout_constraintBottom_toBottomOf="@id/vPlayer"
+                app:layout_constraintEnd_toEndOf="@id/vPlayer"
+                app:layout_constraintStart_toStartOf="@id/vPlayer"
+                app:layout_constraintTop_toTopOf="@id/vPlayer" />
+
+
+        </FrameLayout>
+
+<!--
+        android:visibility="@{!vm.isPlayClicked ? View.VISIBLE : View.GONE}"
+-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

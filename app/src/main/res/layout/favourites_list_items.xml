@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.plazapalm.models.DashBoardModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/clFavItemMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_230sdp"
+        android:layout_marginHorizontal="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:background="@android:color/transparent"
+        android:elevation="@dimen/_2sdp"
+        android:onClick="@{(view)->model.onItemClick.onClick(view,model.adapterPosition,`favDetailsItem`)}"
+        android:paddingBottom="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_5sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/player_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dash_board_items_bg">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFavItem"
+                setDrawable="@{model.image}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/electrician_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dash_board_items_gradient_top"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dash_board_items_gradient"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFavItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_3sdp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center_horizontal"
+                android:text="@={model.name}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="Natalie \nPortman" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFavItemHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_heart_filled_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvFavItemName" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFavItemEmptyHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_heart_icon"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvFavItemName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFavItemDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:singleLine="true"
+                android:text="@={model.description}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@id/tvFavItemLocation"
+                app:layout_constraintStart_toStartOf="parent"
+                tool:text="Lorem ipsum dolor sit amet,\nconsec tetur adipiscing..." />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFavItemLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="start"
+                android:text="@={model.locationName}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvFavItemDistance"
+                app:layout_constraintStart_toStartOf="parent"
+                tool:text="Los Angeles, CA" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFavItemDistance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center_horizontal"
+                android:text="@{model.miles+ ` ` + `miles`}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvFavItemLocation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvFavItemLocation"
+                tool:text="2mi" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

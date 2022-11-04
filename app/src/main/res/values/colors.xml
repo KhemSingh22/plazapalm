@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_blue">#0C154D</color>
+    <color name="app_color">#1E2A78</color>
+    <color name="light_gray">#A3A8B1</color>
+    <color name="button_bg">#86B1D9</color>
+    <color name="light_EditText_Hint_Color">#CFE3F3</color>
+    <color name="light_black">#212E46</color>
+     <color name="light_white_opacity">#80FFFFFF</color>
+     <color name="app_bar_light">#39B4F3</color>
+     <color name="tool_bar_black_color">#202020</color>
+     <color name="forgot_pass">#151515</color>
+     <color name="gray">#9B9B9B</color>
+     <color name="white_gray">#C3C3C3</color>
+     <color name="light_sky_blue">#1A6DA4</color>
+     <color name="sky_blue">#2A8BEA</color>
+     <color name="light_blue_green">#20C982</color>
+     <color name="parrort_color">#2CE834</color>
+     <color name="black">#000000</color>
+     <color name="black_light">#333232</color>
+     <color name="chat_box_bg_color">#EBEDEF</color>
+     <color name="setting_line_views_color">#E5E5E5</color>
+     <color name="red">#D13438</color>
+     <color name="blue">#2A84FF</color>
+     <color name="chat_time_text_color">#A4A3A3</color>
+     <color name="location_cat_light_color">#C5C8D5</color>
+     <color name="delete_red_button_color">#FF4242</color>
+     <color name="light_dark_view_color">#ECF0F1</color>
+     <color name="dark_gray">#C6D3DC</color>
+<!--
+     <color name="dark_gray">#C9C6C6</color>
+-->
+    <!--This is qr code scanner colors property-->
+    <color name="zxing_viewfinder_laser">#17B61D</color>
+    <color name="zxing_result_view">#b0000000</color>
+    <color name="zxing_status_text">#ffffffff</color>
+    <color name="zxing_transparent">#00000000</color>
+    <color name="zxing_viewfinder_mask">#60000000</color>
+
+
+
+
+
+
+</resources>

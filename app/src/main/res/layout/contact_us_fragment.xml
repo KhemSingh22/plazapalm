@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.contactus.ContactUsVM" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tbContactUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:onClick="@{vm::onClicks}"
+                app:navigationIcon="@drawable/ic_back_arrow_button"
+                app:titleTextColor="@color/tool_bar_black_color">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAppBarChangePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Contact Us"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clContactUs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:onClick="@{vm::onClicks}">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvContactUsEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Email"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/clCurrentPass"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCurrentPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tvContactUsEmail">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etContactUsEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/forgot_email_bg"
+                        android:fontFamily="@font/inter_regular"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_8sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.email}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="15sp"
+                        android:theme="@style/MyEditText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvContactusSubject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Subject"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/clNewPass"
+                    app:layout_constraintTop_toBottomOf="@id/clCurrentPass" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clNewPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tvContactusSubject">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etContactUsSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/forgot_email_bg"
+                        android:fontFamily="@font/inter_regular"
+                        android:hint="Subject"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_8sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.subject}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="15sp"
+                        android:theme="@style/MyEditText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvContactUsMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Message"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/clConfirmPass"
+                    app:layout_constraintTop_toBottomOf="@id/clNewPass" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clConfirmPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tvContactUsMessage">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etContactUsMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/forgot_email_bg"
+                        android:cursorVisible="true"
+                        android:fontFamily="@font/inter_regular"
+                        android:gravity="top"
+                        android:hint="Message"
+                        android:maxLines="10"
+                        android:paddingHorizontal="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="@={vm.message}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="15sp"
+                        android:theme="@style/MyEditText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnContactUsSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:background="@drawable/ic_bluemix_button_bg"
+                    android:gravity="center"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingBottom="@dimen/_1sdp"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/clConfirmPass">
+
+                </androidx.appcompat.widget.AppCompatButton>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

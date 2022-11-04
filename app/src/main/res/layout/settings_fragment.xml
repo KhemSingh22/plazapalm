@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.settings.SettingsVM" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.settings.SettingsFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:titleTextColor="@color/tool_bar_black_color">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivSettingBackBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_back_arrow_button"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSetting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Settings"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.03" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clSettingsNotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPushNotification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="Push Notification"
+                        android:textColor="@color/tool_bar_black_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swOnOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:checked="true"
+                        android:fontFamily="@font/inter_medium"
+                        android:textSize="14sp"
+                        android:thumb="@drawable/custom_thumb"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/custom_track" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/viewSettingPushNotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@id/clSettingsNotification" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsChangePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Change Password"
+                    android:textColor="@color/tool_bar_black_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clSettingsNotification" />
+
+
+                <View
+                    android:id="@+id/viewChangePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSettingsChangePassword" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsUpdateEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Update Email"
+                    android:textColor="@color/tool_bar_black_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewChangePassword" />
+
+
+                <View
+                    android:id="@+id/viewUpdateEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSettingsUpdateEmail" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsPrivacyPolicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Privacy Policy"
+                    android:textColor="@color/tool_bar_black_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewUpdateEmail" />
+
+                <View
+                    android:id="@+id/viewSettingsPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSettingsPrivacyPolicy" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsTermsUse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Terms of Use"
+                    android:textColor="@color/tool_bar_black_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSettingsPrivacy" />
+
+                <View
+                    android:id="@+id/viewSettingsTermsUse"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSettingsTermsUse" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsContactUs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Contact Us"
+                    android:textColor="@color/tool_bar_black_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSettingsTermsUse" />
+
+
+                <View
+                    android:id="@+id/viewSettingsContactUs"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSettingsContactUs" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsDeleteAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Delete Account"
+                    android:textColor="@color/tool_bar_black_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSettingsContactUs" />
+
+                <View
+                    android:id="@+id/viewSettingsDeleteAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/setting_line_views_color"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSettingsDeleteAccount" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideLineContactus"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.8"
+                    app:layout_constraintTop_toBottomOf="@id/viewSettingsContactUs" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSettingsLogOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:drawableEnd="@drawable/ic_logout_icon"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:text="Logout"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideLineContactus" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

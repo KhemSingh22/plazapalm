@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.filter.FilterFragmentVM" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.filter.FilterFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tbFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:titleTextColor="@color/tool_bar_black_color">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivFilterBackButton"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_back_arrow_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvToolBarFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="Filter"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toTopOf="@id/btnReportSubmit"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clFilterSecond"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFilterLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="Location"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFilterLocationDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:drawableEnd="@drawable/ic_forward_icon"
+                        android:drawablePadding="@dimen/_20sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:layoutDirection="ltr"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="America"
+                        android:textColor="@color/sky_blue"
+                        android:textDirection="rtl"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvFilterLocation" />
+
+                    <View
+                        android:id="@+id/viewFilterLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@color/setting_line_views_color"
+                        app:layout_constraintTop_toBottomOf="@id/tvFilterLocation" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFilterMiles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="Miles"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@id/sliderFilter"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/viewFilterLocation" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:theme="@style/ThemeOverlay.Slider"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:haloColor="@color/blue"
+                        app:haloRadius="@dimen/_1sdp"
+                        app:labelBehavior="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tvFilterMiles"
+                        app:thumbColor="@color/white"
+                        app:thumbElevation="@dimen/_1sdp"
+                        app:thumbRadius="@dimen/_10sdp"
+                        app:trackColorActive="@color/blue"
+                        app:trackHeight="@dimen/_3sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFilterMilesValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:textColor="@color/sky_blue"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/inter_medium"
+                        app:layout_constraintBottom_toTopOf="@id/sliderFilter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvFilterMiles" />
+
+                    <View
+                        android:id="@+id/vFilterSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@color/setting_line_views_color"
+                        app:layout_constraintTop_toBottomOf="@id/sliderFilter" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFilterCategories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/inter_medium"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="Categories"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvFilterAddCategories"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vFilterSlider" />
+
+                    <View
+                        android:id="@+id/viewFilterCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@color/setting_line_views_color"
+                        app:layout_constraintTop_toBottomOf="@id/tvFilterCategories" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFilterAddCategories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/inter_medium"
+                        android:gravity="end"
+                        android:onClick="@{vm::onClicks}"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_1sdp"
+                        android:text="+ Add Categories"
+                        android:textColor="@color/sky_blue"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvFilterCategories"
+                        app:layout_constraintTop_toBottomOf="@+id/vFilterSlider"
+                        app:layout_constraintTop_toTopOf="@id/tvFilterCategories" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvFilterCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:overScrollMode="never"
+                        android:paddingBottom="@dimen/_5sdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFilterCategories"
+                        tools:itemCount="6"
+                        tools:listitem="@layout/filter_catergories_item"></androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnReportSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/ic_bluemix_button_bg"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:text="Apply"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.favourites.favdetails.FavDetailsVM" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:elevation="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/_5sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChooseOptPremiumDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/inter_medium"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:text="Choose Option :"
+                android:textColor="@color/gray"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@id/vChooseOption"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/vChooseOption"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:background="@color/light_dark_view_color"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvChooseOptPremiumDetails" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditProPremiumOpt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:onClick="@{vm::onClicks}"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="Edit Profile"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vChooseOption" />
+
+            <View
+                android:id="@+id/vEditProPremiumOpt"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/light_dark_view_color"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEditProPremiumOpt" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditProPremiumDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:onClick="@{vm::onClicks}"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="Delete Profile"
+                android:textColor="@color/red"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vEditProPremiumOpt" />
+
+            <View
+                android:id="@+id/vEditProPremiumOptDelete"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/light_dark_view_color"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEditProPremiumDelete" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditProPremiumCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:onClick="@{vm::onClicks}"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="Cancel"
+                android:textColor="@color/gray"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vEditProPremiumOptDelete" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

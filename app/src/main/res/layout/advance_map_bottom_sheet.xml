@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.advancesettings.map.AdvanceMapVM" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        app:behavior_peekHeight="@dimen/_15sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_hideable="false"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/advance_map_bg"
+                    android:elevation="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMapDarkTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Dark Theme"
+                        android:textColor="@color/forgot_pass"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchAdvanceMap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:checked="false"
+                        android:fontFamily="@font/inter_medium"
+                        android:textSize="14sp"
+                        android:thumb="@drawable/custom_thumb"
+                        app:layout_constraintBottom_toBottomOf="@id/tvMapDarkTheme"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvMapDarkTheme"
+                        app:track="@drawable/custom_track" />
+
+                    <View
+                        android:id="@+id/vAdvanceMapDarkTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/light_dark_view_color"
+                        app:layout_constraintTop_toBottomOf="@id/tvMapDarkTheme" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMapLocationOnOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Location On/Off"
+                        android:textColor="@color/forgot_pass"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vAdvanceMapDarkTheme" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchMapLocationOnOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:checked="true"
+                        android:fontFamily="@font/inter_medium"
+                        android:textSize="14sp"
+                        android:thumb="@drawable/custom_thumb"
+                        app:layout_constraintBottom_toBottomOf="@id/tvMapLocationOnOff"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvMapLocationOnOff"
+                        app:track="@drawable/custom_track" />
+
+                    <View
+                        android:id="@+id/vAdvanceMapLocationOnOff"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/light_dark_view_color"
+                        app:layout_constraintTop_toBottomOf="@id/tvMapLocationOnOff" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAdvanceMapFollow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Follow"
+                        android:textColor="@color/forgot_pass"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vAdvanceMapLocationOnOff" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchMapFollow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:checked="true"
+                        android:fontFamily="@font/inter_medium"
+                        android:textSize="14sp"
+                        android:thumb="@drawable/custom_thumb"
+                        app:layout_constraintBottom_toBottomOf="@id/tvAdvanceMapFollow"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvAdvanceMapFollow"
+                        app:track="@drawable/custom_track" />
+
+                    <View
+                        android:id="@+id/vAdvanceMapFollow"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:background="@color/light_dark_view_color"
+                        app:layout_constraintTop_toBottomOf="@id/tvAdvanceMapFollow" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAdvanceMapDummy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Follow"
+                        android:textColor="@color/forgot_pass"
+                        android:textSize="15sp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vAdvanceMapFollow" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchMapDummy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:checked="true"
+                        android:fontFamily="@font/inter_medium"
+                        android:textSize="14sp"
+                        android:thumb="@drawable/custom_thumb"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/tvAdvanceMapDummy"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvAdvanceMapDummy"
+                        app:track="@drawable/custom_track" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

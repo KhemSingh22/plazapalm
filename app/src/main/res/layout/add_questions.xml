@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.advancesettings.questionaries.QuestionariesVM" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:elevation="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/clAddQuestion"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAddQuestionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/inter_medium"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:text="Add Question"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:fontFamily="@font/inter_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAddQuestionCross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:src="@drawable/ic_cross_icon"
+                app:layout_constraintBottom_toBottomOf="@id/tvAddQuestionTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvAddQuestionTitle"
+                app:layout_constraintTop_toTopOf="@+id/tvAddQuestionTitle" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAddQuestions"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/forgot_email_bg"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="top"
+                android:hint="Enter your question"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:paddingBottom="@dimen/_5sdp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:singleLine="false"
+                android:textColor="@color/light_black"
+                android:textColorHint="@color/gray"
+                android:textCursorDrawable="@drawable/color_cursor_black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddedQuesSave"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAddQuestionTitle" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddedQuesSave"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_18sdp"
+                android:layout_marginEnd="@dimen/_18sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/ic_upgrade_btn_bg"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

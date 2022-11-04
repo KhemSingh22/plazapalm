@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.advancesettings.questionaries.QuestionariesVM" />
+
+        <variable
+            name="model"
+            type="com.example.plazapalm.models.QuestionsModel" />
+
+    </data>
+
+    <com.apachat.swipereveallayout.core.SwipeLayout
+        android:id="@+id/slDeleteQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dragEdge="right"
+        app:mode="same_level">
+
+        <LinearLayout
+            android:id="@+id/deletereturn"
+            android:layout_width="100dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:onClick="@{(view)->model.onItemClick.onClick(view,model.adapterPosition,`onSwipeItemClick`)}"
+            android:background="@color/delete_red_button_color"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvQuestionCounts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@{model.questionNumber}"
+                android:textColor="@color/tool_bar_black_color"
+                android:textSize="14sp"
+                app:fontFamily="@font/inter_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvQuestionValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@{model.questionValue}"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:fontFamily="@font/inter_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvQuestionCounts"
+                tool:text="Lorem ipsum dolor sit amet, consectetur adip iscing elit. Quis in dolor euismod suscipit nibh facilisi?" />
+
+            <View
+                android:id="@+id/vAddQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="#F4F6F7"
+                app:layout_constraintTop_toBottomOf="@id/tvQuestionValue" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.apachat.swipereveallayout.core.SwipeLayout>
+</layout>

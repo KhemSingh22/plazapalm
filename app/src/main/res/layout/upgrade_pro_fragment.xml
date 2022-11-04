@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.upgrade.UpgradeVM" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/plaza"
+            tools:context=".views.upgrade.UpgradeProFragment">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUpgradeTexts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/ic_upgrade_btn_bg"
+                android:elevation="@dimen/_15sdp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:stateListAnimator="@null"
+                android:text="Upgrade to Pro Version"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clUpgradeFeatures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tvUpgradeTexts">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeEditProfileLooks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_edit_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Edit profile look"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeEditFrontPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_edit_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Edit front page"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeEditProfileLooks" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradePhotoGallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_gallery_image"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Photo and video Gallery"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeEditFrontPage" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeMapAccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_map_location_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Map Features"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradePhotoGallery" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeLoopVideos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_play_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Loop videos"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeMapAccess" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeQuestionaries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_chat_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Questionaries"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeLoopVideos" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradePriority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_priority"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Priority"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeQuestionaries" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeQrCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_scanner_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="QR Code"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/inter_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradePriority" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeDisplayStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawableStart="@drawable/ic_volume_display_icon"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Display Stats"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/inter_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeQrCode" />
+
+
+                <View
+                    android:id="@+id/viewFavourite"
+                    style="@style/UpgradeProView"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvUpgradeDisplayStatus" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--cl for Get full access and upgrade button contents -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clUpgradeFullAccess"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/clUpgradeFeatures">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeGetFullAccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Get full access"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/inter_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeGetAccessPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="$4.99"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/inter_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeGetFullAccess" />
+
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUpgradeNow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_28sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_28sdp"
+                    android:background="@drawable/capsule_login_button"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpgradeGetAccessPrice"
+                    android:soundEffectsEnabled="true"
+                    android:text="Upgrade Now "
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_black"
+                    android:textStyle="normal"
+              />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpgradeNotNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:onClick="@{vm::onClicks}"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="Not Now "
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/btnUpgradeNow"
+                    app:fontFamily="@font/inter_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUpgradeDescriptionTerms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:fontFamily="@font/inter_medium"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:stateListAnimator="@null"
+                android:text="By subscribing, you accept our Terms of Service and Privacy Policy.
+Payment will be charged to your iTunes account at confirmation of purchase and will automatically renew (at the duration/price selected) unless auto-renew is turned off at least 24 hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period. Current subscription may not be cancelled during the active subscription period; however, you can manage your subscription and/or turn off auto-renewal by visiting your iTunes Account Settings after purchase."
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/clUpgradeFullAccess"
+                android:textColor="@color/light_white_opacity"
+                android:textSize="14sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

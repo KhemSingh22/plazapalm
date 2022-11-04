@@ -1,0 +1,149 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.PlazaPalm" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/app_color</item>
+        <item name="colorPrimaryDark">@color/app_color</item>
+        <item name="colorAccent">@color/white</item>
+        <!-- Customize your theme here. -->
+        <item name="colorSecondary">@color/app_color</item>
+        <item name="colorSecondaryVariant">@color/app_color</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">@color/app_bar_light</item>
+    </style>
+
+    <!--for Shape-able image view-->
+    <style name="corner10Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8%</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+    <!--This is for change bubble color of edittext to show black-->
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/app_color</item>
+        <item name="colorControlActivated">@color/black</item>
+    </style>
+
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/light_white_opacity</item>
+    </style>
+
+    <!--View for AdvanceSettings -->
+    <style name="ViewAdvanceSettings">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/light_white_opacity</item>
+    </style>
+
+    <!--View for  Location Categories-->
+    <style name="LocationCatView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/light_dark_view_color</item>
+    </style>
+
+
+    <!--View for upgrade pro -->
+    <style name="UpgradeProView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+    <style name="ThemeOverlay.Slider" parent="">
+        <item name="colorOnPrimary">@color/sky_blue</item>
+        <item name="height">@dimen/_5sdp</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="trackColorActive">@color/sky_blue</item>
+        <item name="thumbColor">@color/white</item>
+        <item name="trackColorInactive">@color/gray</item>
+    </style>
+
+    <!--Round Imageview -->
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <!--Custom Calendar Theme -->
+    <!-- <style name="CalenderViewCustom" parent="Theme.AppCompat">
+         <item name="colorAccent">@color/white</item>
+         <item name="colorPrimary">@color/red</item>
+     </style>
+     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+         <item name="android:textColor">@color/red</item>
+         <item name="android:weekNumberColor">@color/white</item>
+     </style>
+     <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+         <item name="android:textColor">@color/white</item>
+     </style>-->
+
+    <style name="FullHeightDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+
+    <style name="CalenderViewCustom." parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/white</item>
+        <item name="android:textColorPrimaryInverse">@color/red</item>
+        // color of date selected.
+    </style>
+
+    <style name="popup_window_animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+
+    <style name="DialogeTheme" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@android:color/black</item>
+    </style>
+
+    <!--Checkbox theme -->
+  <!--  <selector xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:drawable="@drawable/check" android:state_selected="true"/>
+        <item android:drawable="@drawable/unchecked"/>
+    </selector>-->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/light_blue</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="SpinnerDatePickerDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:calendarViewShown">false</item>
+        <item name="android:datePickerMode">spinner</item>
+    </style>
+</resources>

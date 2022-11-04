@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.dashboard.DashBoardVM" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDashBoardSelectedEvents"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="false"
+            android:scrollbars="vertical"
+            setRecyclerAdapter="@{vm.dashSelectedAdapter}"
+            android:background="@drawable/selected_categories_bg_dashboard"
+            android:orientation="vertical"
+            android:visibility="@{!vm.isClicked ?View.VISIBLE : View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/dash_selected_events" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

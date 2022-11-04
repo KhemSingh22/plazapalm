@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.verifyemailsecond.EmailVerifyVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clEmailVerifyMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{vm::onClicks}"
+        tools:context=".views.verifyemailsecond.EmailVerifyFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gLineEmailVerify"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.09" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmailVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:text="Verify Email"
+            android:textColor="@color/light_black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gLineEmailVerify" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmailVerifyDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/inter_regular"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="Kindly check your email and verify it."
+            android:textColor="@color/forgot_pass"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmailVerify" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nScrollVerifyEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fillViewport="false"
+            app:layout_constraintTop_toBottomOf="@id/tvEmailVerifyDes">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvVerifyEmailEnterCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Enter Code"
+                    android:textColor="@color/forgot_pass"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/clEmailVerify"
+                    app:layout_constraintStart_toStartOf="@id/clEmailVerify" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clEmailVerify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_1sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvVerifyEmailEnterCode">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etEmailVerify"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/forgot_email_bg"
+                        android:fontFamily="@font/inter_medium"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.otp}"
+                        android:textColor="@color/tool_bar_black_color"
+                        android:textColorHint="@color/gray"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmailVerifyResend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:onClick="@{vm::onClicks}"
+                    android:text="Resend OTP"
+                    android:textColor="@color/forgot_pass"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/clEmailVerify"
+                    app:layout_constraintTop_toBottomOf="@id/clEmailVerify" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEmailVerify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/ic_bluemix_button_bg"
+                    android:fontFamily="@font/inter_semibold"
+                    android:onClick="@{vm::onClicks}"
+                    android:text="Verify"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEmailVerifyResend" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

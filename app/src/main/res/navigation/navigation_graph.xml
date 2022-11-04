@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.plazapalm.views.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/splash_fragment">
+
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_graph" />
+
+        <action
+            android:id="@+id/action_splash_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.plazapalm.views.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.example.plazapalm.views.dashboard.DashBoardFragment"
+        android:label="dash_board_fragment"
+        tools:layout="@layout/dash_board_fragment">
+        <action
+            android:id="@+id/action_dashBoardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_favDetailsFragment"
+            app:destination="@id/favDetailsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.plazapalm.views.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/signup_fragment">
+        <action
+            android:id="@+id/action_signUpFragment_to_verifyEmailFragment"
+            app:destination="@id/verifyEmailFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.plazapalm.views.welcome.WelcomeFragment"
+        android:label="welcome_fragment"
+        tools:layout="@layout/welcome_fragment">
+        <action
+            android:id="@+id/action_welcomeFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyEmailFragment"
+        android:name="com.example.plazapalm.views.verifymail.VerifyEmailFragment"
+        android:label="VerifyEmailFragment"
+        tools:layout="@layout/verify_email_fragment">
+        <action
+            android:id="@+id/action_verifyEmailFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.plazapalm.views.forgotpassword.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment"
+        tools:layout="@layout/forgot_password_fragment">
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_emailVerifyFragment"
+            app:destination="@id/emailVerifyFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesListFragment"
+        android:name="com.example.plazapalm.views.catergorylist.CategoriesListFragment"
+        android:label="categories_list_fragment"
+        tools:layout="@layout/categories_list_fragment">
+        <action
+            android:id="@+id/action_categoriesListFragment_to_addCitiesFragment"
+            app:destination="@id/addCitiesFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/categoriesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.example.plazapalm.views.myprofile.MyProfileFragment"
+        android:label="MyProfileFragment"
+        tools:layout="@layout/my_proifle_fragment">
+        <action
+            android:id="@+id/action_myProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_favDetailsFragment"
+            app:destination="@id/favDetailsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_viewProfileFragment"
+            app:destination="@id/postProfileFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_upgradeProFragment"
+            app:destination="@id/upgradeProFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@layout/my_proifle_fragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_advanceSettingFragment"
+            app:destination="@id/advanceSettingFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@layout/my_proifle_fragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_QRCodeGenerateFragment"
+            app:destination="@id/QRCodeGenerateFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@layout/my_proifle_fragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_qrCodeScannerFragment"
+            app:destination="@id/qrCodeScannerFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@layout/my_proifle_fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.plazapalm.views.editprofile.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/edit_profile_fragment">
+
+        <action
+            android:id="@+id/action_editProfileFragment_to_settingFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/editProfileFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.example.plazapalm.views.messageslist.MessagesFragment"
+        android:label="messages_fragment"
+        tools:layout="@layout/messages_fragment">
+        <action
+            android:id="@+id/action_messagesFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/messagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.plazapalm.views.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/settings_fragment">
+        <action
+            android:id="@+id/action_settingsFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_updateEmailFragment"
+            app:destination="@id/updateEmailFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_termsUseFragment"
+            app:destination="@id/termsUseFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_setting_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.plazapalm.views.changepass.ChangePasswordFragment"
+        android:label="ChangePasswordFragment"
+        tools:layout="@layout/change_password_fragment" />
+    <fragment
+        android:id="@+id/updateEmailFragment"
+        android:name="com.example.plazapalm.views.updatemail.UpdateEmailFragment"
+        android:label="UpdateEmailFragment"
+        tools:layout="@layout/update_email_fragment" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.example.plazapalm.views.contactus.ContactUsFragment"
+        android:label="ContactUsFragment"
+        tools:layout="@layout/contact_us_fragment" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.example.plazapalm.views.privacypolicy.PrivacyPolicyFragment"
+        android:label="PrivacyPolicyFragment"
+        tools:layout="@layout/privacy_policy_fragment" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.plazapalm.views.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/chat_fragment" />
+
+    <fragment
+        android:id="@+id/postProfileFragment"
+        android:name="com.example.plazapalm.views.myprofile.postprofile.PostProfileFragment"
+        android:label="ViewProfileFragment"
+        tools:layout="@layout/post_profile_fragment">
+        <action
+            android:id="@+id/action_viewProfileFragment_to_addPhotosFragment"
+            app:destination="@id/addPhotosFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/postProfileFragment" />
+
+        <action
+            android:id="@+id/action_viewProfileFragment_to_selectCategoryFragment"
+            app:destination="@id/selectCategoryFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/postProfileFragment" />
+
+        <action
+            android:id="@+id/action_viewProfileFragment_to_addCitiesFragment"
+            app:destination="@id/addCitiesFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/postProfileFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.plazapalm.views.myprofile.calendar.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/calendar_fragment">
+        <action
+            android:id="@+id/action_calendarFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_bookingDetailsFragment"
+            app:destination="@id/bookingDetailsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/calendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsUseFragment"
+        android:name="com.example.plazapalm.views.termsuse.TermsUseFragment"
+        android:label="TermsUseFragment"
+        tools:layout="@layout/terms_use_fragment" />
+    <fragment
+        android:id="@+id/addPhotosFragment"
+        android:name="com.example.plazapalm.views.addphotos.AddPhotosFragment"
+        android:label="AddPhotosFragment"
+        tools:layout="@layout/add_photos_fragment"
+        >
+        <action
+            android:id="@+id/action_addPhotosFragment_to_postProfileFragment"
+            app:destination="@id/postProfileFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/favouritesFragment"
+            tools:layout="@layout/fav_details_fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addCitiesFragment"
+        android:name="com.example.plazapalm.views.catergorylist.addcities.AddCitiesFragment"
+        android:label="AddCitiesFragment"
+        tools:layout="@layout/add_cities_fragment" >
+
+        <action
+            android:id="@+id/action_favouritesFragment_to_postProfileFragment"
+            app:destination="@id/postProfileFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/favouritesFragment"
+            tools:layout="@layout/fav_details_fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.plazapalm.views.favourites.FavouritesFragment"
+        android:label="FavouritesFragment"
+        tools:layout="@layout/favourites_fragment">
+        <action
+            android:id="@+id/action_favouritesFragment_to_favDetailsFragment"
+            app:destination="@id/favDetailsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/favouritesFragment"
+            tools:layout="@layout/fav_details_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favDetailsFragment"
+        android:name="com.example.plazapalm.views.favourites.favdetails.FavDetailsFragment"
+        android:label="FavDetailsFragment"
+        tools:layout="@layout/fav_details_fragment">
+        <action
+            android:id="@+id/action_favDetailsFragment_to_reportChooseOptionFragment"
+            app:destination="@id/reportChooseOptionFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/favDetailsFragment" />
+        <action
+            android:id="@+id/action_favDetailsFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportChooseOptionFragment"
+        android:name="com.example.plazapalm.views.reportselection.ReportChooseOptionFragment"
+        android:label="ReportChooseOptionFragment"
+        tools:layout="@layout/fragment_report_choose_option">
+        <action
+            android:id="@+id/action_reportChooseOptionFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/reportChooseOptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.example.plazapalm.views.report.ReportFragment"
+        android:label="ReportFragment"
+        tools:layout="@layout/report_fragment">
+        <!-- <action
+             android:id="@+id/action_reportFragment_to_myProfileFragment"
+             app:destination="@id/myProfileFragment"
+             app:enterAnim="@anim/pop_enter"
+             app:exitAnim="@anim/exit"
+             app:popUpTo="@id/reportChooseOptionFragment"
+             app:popEnterAnim="@anim/slide_in_left"
+             app:popExitAnim="@anim/slide_out_right"
+             />-->
+    </fragment>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.example.plazapalm.views.filter.FilterFragment"
+        android:label="FilterFragment"
+        tools:layout="@layout/filter_fragment">
+        <action
+            android:id="@+id/action_filterFragment_to_categoriesListFragment"
+            app:destination="@id/categoriesListFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/filterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/upgradeProFragment"
+        android:name="com.example.plazapalm.views.upgrade.UpgradeProFragment"
+        android:label="UpgradeProFragment"
+        tools:layout="@layout/upgrade_pro_fragment" />
+    <fragment
+        android:id="@+id/advanceSettingFragment"
+        android:name="com.example.plazapalm.views.advancesettings.AdvanceSettingFragment"
+        android:label="AdvanceSettingFragment"
+        tools:layout="@layout/advance_setting_fragment">
+        <action
+            android:id="@+id/action_advanceSettingFragment_to_advanceEditLookFragment"
+            app:destination="@id/advanceEditLookFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/advanceSettingFragment" />
+        <action
+            android:id="@+id/action_advanceSettingFragment_to_editFrontPageFragment"
+            app:destination="@id/editFrontPageFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/advanceSettingFragment" />
+        <action
+            android:id="@+id/action_advanceSettingFragment_to_advanceSettingMapFragment"
+            app:destination="@id/advanceSettingMapFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/advanceSettingFragment" />
+        <action
+            android:id="@+id/action_advanceSettingFragment_to_questionariesFragment"
+            app:destination="@id/questionariesFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/advanceSettingFragment" />
+        <action
+            android:id="@+id/action_advanceSettingFragment_to_picturesFragment"
+            app:destination="@id/picturesFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/picturesFragment" />
+        <action
+            android:id="@+id/action_advanceSettingFragment_to_advanceMapFragment"
+            app:destination="@id/advanceMapFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/advanceSettingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/advanceEditLookFragment"
+        android:name="com.example.plazapalm.views.advancesettings.editlook.AdvanceEditLookFragment"
+        android:label="AdvanceEditLookFragment"
+        tools:layout="@layout/advance_edit_look_fragment" />
+    <fragment
+        android:id="@+id/editFrontPageFragment"
+        android:name="com.example.plazapalm.views.advancesettings.editfontpage.EditFrontPageFragment"
+        android:label="EditFrontPageFragment"
+        tools:layout="@layout/edit_front_page_fragment" />
+    <fragment
+        android:id="@+id/advanceSettingMapFragment"
+        android:name="com.example.plazapalm.views.advancesettings.editmap.AdvanceSettingMapFragment"
+        android:label="AdvanceSettingMapFragment"
+        tools:layout="@layout/advance_setting_map_fragment" />
+    <fragment
+        android:id="@+id/questionariesFragment"
+        android:name="com.example.plazapalm.views.advancesettings.questionaries.QuestionariesFragment"
+        android:label="QuestionariesFragment"
+        tools:layout="@layout/questionaries_fragment" />
+    <fragment
+        android:id="@+id/QRCodeGenerateFragment"
+        android:name="com.example.plazapalm.premiumviews.qrcodegenerate.QRCodeGenerateFragment"
+        android:label="QRCodeGenerateFragment"
+        tools:layout="@layout/qr_code_generate_fragment" />
+    <fragment
+        android:id="@+id/picturesFragment"
+        android:name="com.example.plazapalm.views.advancesettings.pictures.PicturesFragment"
+        android:label="PicturesFragment"
+        tools:layout="@layout/pictures_fragment">
+        <action
+            android:id="@+id/action_picturesFragment_to_showPictureVideoFragment"
+            app:destination="@id/showPictureVideoFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/showPictureVideoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showPictureVideoFragment"
+        android:name="com.example.plazapalm.views.advancesettings.pictures.ShowPictureVideoFragment"
+        android:label="ShowPictureVideoFragment"
+        tools:layout="@layout/show_picture_video_fragment" />
+    <fragment
+        android:id="@+id/advanceMapFragment"
+        android:name="com.example.plazapalm.views.advancesettings.map.AdvanceMapFragment"
+        android:label="AdvanceMapFragment"
+        tools:layout="@layout/advance_map_fragment" />
+    <fragment
+        android:id="@+id/confirmBookingFragment"
+        android:name="com.example.plazapalm.views.confirmbookthankyou.ConfirmBookingFragment"
+        android:label="ConfirmBookingFragment"
+        tools:layout="@layout/confirm_booking_fragment">
+        <action
+            android:id="@+id/action_confirmBookingFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/confirmBookingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingDetailsFragment"
+        android:name="com.example.plazapalm.views.bookingdetails.BookingDetailsFragment"
+        android:label="BookingDetailsFragment"
+        tools:layout="@layout/booking_details_fragment">
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/bookingDetailsFragment" />
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_favDetailsFragment"
+            app:destination="@id/favDetailsFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/bookingDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thankYouFragment"
+        android:name="com.example.plazapalm.views.confirmbookthankyou.ThankYouFragment"
+        android:label="ThankYouFragment"
+        tools:layout="@layout/thank_you_fragment" />
+    <fragment
+        android:id="@+id/qrCodeScannerFragment"
+        android:name="com.example.plazapalm.views.myprofile.qrcodescanner.QrCodeScannerFragment"
+        android:label="qr_code_scanner_fragment"
+        tools:layout="@layout/qr_code_scanner_fragment" />
+    <fragment
+        android:id="@+id/emailVerifyFragment"
+        android:name="com.example.plazapalm.views.verifyemailsecond.EmailVerifyFragment"
+        android:label="EmailVerifyFragment"
+        tools:layout="@layout/email_verify_fragment" />
+    <fragment
+        android:id="@+id/selectCategoryFragment"
+        android:name="com.example.plazapalm.views.selectcategory.SelectCategoryFragment"
+        android:label="SelectCategoryFragment" >
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_postProfileFragment"
+            app:destination="@id/postProfileFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/bookingDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/openCategeroyFragment"
+        android:name="com.example.plazapalm.views.selectcategory.opencategeroy.OpenCategeroyFragment"
+        android:label="OpenCategeroyFragment" >
+        <action
+            android:id="@+id/action_openCategeroyFragment_to_addCitiesFragment"
+            app:destination="@id/addCitiesFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/categoriesListFragment" />
+        <action
+            android:id="@+id/action_openCategeroyFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/categoriesListFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/detailsCategeroyFragment"
+        android:name="com.example.plazapalm.views.selectcategory.detailscategeory.DetailsCategeroyFragment"
+        android:label="fragment_details_categeroy"
+        tools:layout="@layout/fragment_details_categeroy" >
+
+    </fragment>
+
+</navigation>

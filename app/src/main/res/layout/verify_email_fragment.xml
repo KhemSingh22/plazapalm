@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.verifymail.VerifyEmailVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_plaza_splash_bg"
+        android:onClick="@{vm::onClicks}"
+        tools:context=".views.verifymail.VerifyEmailFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gLineVerifyEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivVerifyEmailBackBtn"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="start"
+            android:onClick="@{vm::onClicks}"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back_arrow_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gLineVerifyEmail" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvVerifyEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/hello_valentina"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:text="Verify Email"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gLineVerifyEmail" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvVerifyEmailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/inter_regular"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="Kindly check your email and verify it."
+            android:textColor="@color/light_white_opacity"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvVerifyEmail" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nScrollVerifyEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fillViewport="false"
+            app:layout_constraintTop_toBottomOf="@id/tvVerifyEmailDescription">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvVerifyEmailEnterCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Enter Code"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/clVerifyEmailEnterCode"
+                    app:layout_constraintStart_toStartOf="@id/clVerifyEmailEnterCode" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clVerifyEmailEnterCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/capsule_login_bg"
+                    android:paddingVertical="@dimen/_1sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvVerifyEmailEnterCode">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etVerifyEmailEnterCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_message"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:hint="Enter Code"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@={vm.otp}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/light_EditText_Hint_Color"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnVerifyEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/capsule_login_button"
+                    android:fontFamily="@font/inter_bold"
+                    android:onClick="@{vm::onClicks}"
+                    android:text="Verify"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_black"
+                    app:layout_constraintTop_toBottomOf="@id/clVerifyEmailEnterCode" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvVerifyEmailResendOtp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:gravity="center_horizontal"
+                    android:onClick="@{vm::onClicks}"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:text="Resend OTP"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnVerifyEmail" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

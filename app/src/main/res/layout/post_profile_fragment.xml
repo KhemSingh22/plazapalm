@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.example.plazapalm.views.myprofile.postprofile.PostProfileVM" />
+
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.myprofile.postprofile.PostProfileFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivViewEditProfileBackBtn"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="start"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_back_arrow_button"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvViewEditMyProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Profile Post"
+                    android:textColor="@color/tool_bar_black_color"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gLineMyProfile" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivViewEditProfileDotsBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:onClick="@{vm::onClicks}"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_profile_view_dots_icon"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSecond"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_18sdp"
+                app:layout_constraintBottom_toTopOf="@+id/btnUpdateEmail"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scrollEditViewProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:fillViewport="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clEditProAllViewsHolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/gLineAddImages"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="@dimen/_5sdp"
+                            app:layout_constraintGuide_percent="0.01" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clViewEditProfileAdd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:background="@drawable/add_images_bg"
+                            android:elevation="@dimen/_5sdp"
+                            android:onClick="@{vm::onClicks}"
+                            android:paddingHorizontal="@dimen/_15sdp"
+                            android:paddingVertical="@dimen/_8sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/gLineAddImages">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivViewEditProfileAdd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:onClick="@{vm::onClicks}"
+                                android:padding="@dimen/_5sdp"
+                                android:src="@drawable/ic_gray_add_icon"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvViewEditProfileAdd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_medium"
+                                android:text="   Add \nImages"
+                                android:textColor="@color/app_bar_light"
+                                android:textSize="10sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/ivViewEditProfileAdd" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvViewEditAddImages"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="horizontal"
+                            android:overScrollMode="never"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintBottom_toBottomOf="@id/clViewEditProfileAdd"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/clViewEditProfileAdd"
+                            app:layout_constraintTop_toTopOf="@id/clViewEditProfileAdd"
+                            tools:listitem="@layout/add_images_view_profile" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProFirstName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="First Name"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clViewEditProfileAdd" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProLastName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="@string/last_name"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@id/tvVEditProFirstName"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tvVEditProFirstName"
+                            app:layout_constraintTop_toBottomOf="@id/clViewEditProfileAdd"
+                            app:layout_constraintTop_toTopOf="@id/tvVEditProFirstName" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProFirstName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="First Name"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="@={vm.firstName}"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/etVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProFirstName" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProLastName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="@string/last_name"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:minLines="3"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="@={vm.lastName}"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@id/etVEditProFirstName"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/etVEditProFirstName"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProFirstName"
+                            app:layout_constraintTop_toTopOf="@id/etVEditProFirstName" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProUserName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="User Name"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProFirstName" />
+
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProUserName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="@string/user_name"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="@={vm.userName}"
+                            android:afterTextChanged="@{(text) -> vm.onTextChange(text)}"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/etVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProUserName" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Profile Title"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProUserName" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProfileTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Profile Title"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="@={vm.profileTitle}"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProTitle" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProChooseCategory"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Choose Category"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProfileTitle" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/etVEditProChooseCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="@string/choose_categeory"
+                            android:text="@={vm.categeory}"
+                            android:inputType="text"
+                            android:onClick="@{vm::onClicks}"
+                            android:editable="false"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProChooseCategory" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProAddAddress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Add Address"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProChooseCategory" />
+
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProAddAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Add Address"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="@={vm.address}"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProAddAddress" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProTags"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Add Location"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProAddAddress" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/etVEditProTags"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Location"
+                            android:text="@={vm.location}"
+                            android:inputType="text"
+                            android:onClick="@{vm::onClicks}"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProTags" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProDescription"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Description"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProTags" />
+
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="top"
+                            android:text="@={vm.description1}"
+                            android:hint="Description 1"
+                            android:inputType="text"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:singleLine="false"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescription" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProDescriptionSecond"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Description2"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProDescription" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProDescriptionSecond"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="top"
+                            android:hint="Description 2"
+                            android:inputType="text"
+                            android:text="@={vm.description2}"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:singleLine="false"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescriptionSecond" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProDescriptionThird"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Description 3"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProDescriptionSecond" />
+
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProDescriptionThird"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="top"
+                            android:hint="Description 3"
+                            android:inputType="text"
+                            android:text="@={vm.description3}"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:singleLine="false"
+                            android:textColor="@color/light_black"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescriptionThird" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvVEditProExpiryDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/inter_medium"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="Expiration date"
+                            android:textColor="@color/forgot_pass"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etVEditProDescriptionThird" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/etVEditProExpiryDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:background="@drawable/forgot_email_bg"
+                            android:fontFamily="@font/inter_medium"
+                            android:hint="Expiration Date"
+                            android:inputType="text"
+                            android:editable="false"
+                            android:onClick="@{vm::onClicks}"
+                            android:text="@={vm.expireDate}"
+                            android:maxLength="30"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:textColor="@color/tool_bar_black_color"
+                            android:textColorHint="@color/gray"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProExpiryDate" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUpdateEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/ic_bluemix_button_bg"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:onClick="@{vm::onClicks}"
+                android:paddingBottom="@dimen/_1sdp"
+                android:text="@string/post"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

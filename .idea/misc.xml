@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/add_images_bg.xml" value="0.136" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/add_photo_bg.xml" value="0.138" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/add_photos_bg.xml" value="0.177" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/checkimage_selector.xml" value="0.177" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_back_icon_black.xml" value="0.1985" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_camera_icon_bg.xml" value="0.1985" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_home.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_image_circle_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_like_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_lock_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_logout_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_map_location_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_message.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_message_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_minus_image.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_navigation_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_place_holder.xml" value="0.1495" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_play_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_plaza_splash_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_plus_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_priority.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_profile_bottom_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_profile_view_dots_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_receiver.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_red_button_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_scanner_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_search_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_search_icon_dashboard.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_sender.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_setting_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_side_bar_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_thumbs_down.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_unchecked.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_upgrade_btn_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_upgrade_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_volume_display_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_welcome_lines.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/ic_welcome_next_button.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/map_search_white_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/progress_loading.xml" value="0.1185" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/round_minus_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/roundimage.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/search_location_gray_icon.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/searched_cities_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/selected_categories_bg_dashboard.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/shapable_image_bg.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/tick_check.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/drawable/tick_uncheck.xml" value="0.1555" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/add_cities_fragment.xml" value="0.22" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/add_images_view_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/add_photos_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/add_photos_item_list.xml" value="0.5" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/calendar_fragment.xml" value="0.25" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/categories_list_fragment.xml" value="0.16458333333333333" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/categories_list_items.xml" value="0.1" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/common_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/confirm_booking_fragment.xml" value="0.22" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/contact_us_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/dash_board_events_items.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/dash_board_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/edit_profile_fragment.xml" value="0.25" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fav_details_fragment.xml" value="0.25" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/filter_catergories_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fragment_details_categeroy.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fragment_open_categeroy.xml" value="0.1" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fragment_select_category.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/my_proifle_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/open_camera_and_gallery.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/pictures_item_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/post_profile_fragment.xml" value="0.2" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/progress_loading.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/settings_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/signup_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/slect_cate_items.xml" value="0.1796875" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/thank_you_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/verify_email_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/view_profile_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/view_profile_images_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/xml/file_paths.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
