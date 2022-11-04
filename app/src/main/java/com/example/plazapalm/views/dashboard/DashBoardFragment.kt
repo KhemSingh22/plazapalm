@@ -51,9 +51,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
 //                .into(binding!!.ivDashBoardSelectedList)
 
         }else{
-
             viewModel.status.set("DashBoard")
-
         }
     }
 
