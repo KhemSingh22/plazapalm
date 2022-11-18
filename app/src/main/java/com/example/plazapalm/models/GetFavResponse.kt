@@ -1,40 +1,43 @@
 package com.example.plazapalm.models
 
 import com.example.plazapalm.recycleradapter.AbstractModel
+import java.io.Serializable
 
-data class GetProfilebyCateResponse(
-    val data: List<Datam>,
-    val message: String,
-    val status: Int
-): AbstractModel()
+data class GetFavResponse(
+    var data: ArrayList<FavData>?,
+    val message: String?="",
+    val status: Int?=0
+    ) :AbstractModel() , Serializable
 
-data class Datam(
+    data class FavData(
     val _id: String?="",
     val address: String?="",
     val c_id: String?="",
     val category_name: String?="",
-    val created_at: String?="",
     val description_1: String?="",
     val description_2: String?="",
     val description_3: String?="",
-    val expiry_date: Any?,
+    val distance: Double?=0.0,
+    val expiry_date: String?="",
     val first_name: String?="",
     val frontpage_bottom_text: String?="",
     val frontpage_top_text: String?="",
-    val isAddedToCalender: Boolean?=false,
-    val isFavourite: Boolean?=false,
     val isPremium: Int?=0,
     val is_bottom_selected: Boolean?=false,
     val is_top_selected: Boolean?=false,
     val last_name: String?="",
-    val lat: Double?,
-    val likeCount: Int?=0,
+    val lat: Double?=0.0,
+    val location: FavLocation?,
     val location_text: String?="",
-    val long: Double?,
-    val postProfile_picture: List<String>?,
+    val long: Double?=0.0,
+    val p_id: String?="",
+    val postProfile_picture: List<Any>?,
     val profile_title: String?="",
     val tags: String?="",
-    val u_id: String?="",
     val user_name: String?=""
-)  : AbstractModel()
+    ) :AbstractModel()
 
+    data class FavLocation(
+    val coordinates: List<Double>?,
+    val type: String?=""
+   ) :AbstractModel()

@@ -22,6 +22,7 @@ import com.example.plazapalm.MainActivity
 import com.example.plazapalm.R
 import com.example.plazapalm.datastore.DataStoreUtil
 import com.example.plazapalm.interfaces.ItemClickListener
+import com.example.plazapalm.networkcalls.Repository
 import com.example.plazapalm.pref.PreferenceFile
 import com.example.plazapalm.utils.CommonMethods.context
 import com.example.plazapalm.views.addphotos.adapter.AddPhotosAdapter
@@ -35,7 +36,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AddPhotosVM @Inject constructor(
     var dataStoreUtil: DataStoreUtil,
-    var pref:PreferenceFile
+    var pref:PreferenceFile,
+    var repository: Repository
     ) : ViewModel(), ItemClickListener {
 
     var dialog: Dialog? = null

@@ -2,6 +2,8 @@ package com.example.plazapalm.pref
 
 import android.content.SharedPreferences
 import com.example.plazapalm.models.AddPhoto
+import com.example.plazapalm.models.SavePostProfileResponse
+import com.example.plazapalm.utils.Constants
 import com.google.gson.Gson
 import javax.inject.Inject
 
@@ -14,7 +16,7 @@ class PreferenceFile @Inject constructor(
         editor.apply()
     }
 
-    fun storeBoolKey(key: String, value: Boolean) {
+    fun storeBoolKey(key : String, value : Boolean) {
         editor.putBoolean(key, value)
         editor.apply()
     }
@@ -27,7 +29,20 @@ class PreferenceFile @Inject constructor(
         editor.putString("location", value)
         editor.apply()
     }
-    fun retrieveLocarion(): String? {
+    fun storeResponse( body: SavePostProfileResponse) {
+        val gson = Gson()
+        val json: String = gson.toJson(body)
+        editor.putString(Constants.POSTRESPONSE, json)
+        editor.apply()
+    }
+
+    fun retrieveResponse(): SavePostProfileResponse? {
+        val json : String?  = sharedPreferences.getString(Constants.POSTRESPONSE, "{}" )
+//        val obj: SavePostProfileResponse = gson.fromJson(json, SavePostProfileResponse::class.java)
+        return Gson().fromJson(json, SavePostProfileResponse::class.java)
+
+    }
+    fun retrieveLocarion() : String? {
         return sharedPreferences.getString("location", null)
     }
 

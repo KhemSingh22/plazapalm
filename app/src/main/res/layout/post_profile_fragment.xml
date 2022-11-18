@@ -11,7 +11,6 @@
             name="vm"
             type="com.example.plazapalm.views.myprofile.postprofile.PostProfileVM" />
 
-
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -412,7 +411,6 @@
                             android:text="@={vm.location}"
                             android:inputType="text"
                             android:onClick="@{vm::onClicks}"
-                            android:maxLength="30"
                             android:paddingVertical="@dimen/_8sdp"
                             android:textColor="@color/tool_bar_black_color"
                             android:textColorHint="@color/gray"
@@ -438,6 +436,7 @@
                             app:layout_constraintTop_toBottomOf="@id/etVEditProTags" />
 
 
+<!--
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/etVEditProDescription"
                             android:layout_width="match_parent"
@@ -447,19 +446,36 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@drawable/forgot_email_bg"
                             android:fontFamily="@font/inter_medium"
-                            android:gravity="top"
                             android:text="@={vm.description1}"
                             android:hint="Description 1"
-                            android:inputType="text"
+                            android:inputType="textImeMultiLine"
+                            android:gravity="top"
                             android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:singleLine="false"
                             android:textColor="@color/tool_bar_black_color"
                             android:textCursorDrawable="@drawable/color_cursor_black"
                             android:textSize="14sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tvVEditProDescription" />
+-->
 
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProDescription"
+                            android:layout_width="match_parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescription"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="top"
+                            android:background="@drawable/forgot_email_bg"
+                            android:textColorHint="@color/gray"
+                            android:textColor="@color/light_black"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:text="@={vm.description1}"
+                            android:textSize="14sp"
+                            android:hint="Description 1"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvVEditProDescriptionSecond"
@@ -469,15 +485,15 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/inter_medium"
                             android:paddingHorizontal="@dimen/_5sdp"
-                            android:text="Description2"
+                            android:text="@string/description2"
                             android:textColor="@color/forgot_pass"
                             android:textSize="14sp"
                             app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/etVEditProDescription" />
 
+<!--
                         <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/etVEditProDescriptionSecond"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_100sdp"
                             android:layout_marginStart="@dimen/_10sdp"
@@ -485,19 +501,36 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@drawable/forgot_email_bg"
                             android:fontFamily="@font/inter_medium"
+                            android:hint="@string/description_2"
                             android:gravity="top"
-                            android:hint="Description 2"
-                            android:inputType="text"
+                            android:inputType="textImeMultiLine"
                             android:text="@={vm.description2}"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:singleLine="false"
                             android:textColor="@color/tool_bar_black_color"
                             android:textColorHint="@color/gray"
                             android:textCursorDrawable="@drawable/color_cursor_black"
                             android:textSize="14sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tvVEditProDescriptionSecond" />
+-->
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etVEditProDescriptionSecond"
+                            android:layout_width="match_parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescriptionSecond"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="top"
+                            android:background="@drawable/forgot_email_bg"
+                            android:hint="@string/description_2"
+                            android:textColorHint="@color/gray"
+                            android:textColor="@color/light_black"
+                            android:textSize="14sp"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:text="@={vm.description2}"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvVEditProDescriptionThird"
@@ -507,7 +540,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/inter_medium"
                             android:paddingHorizontal="@dimen/_5sdp"
-                            android:text="Description 3"
+                            android:text="@string/description_3"
                             android:textColor="@color/forgot_pass"
                             android:textSize="14sp"
                             app:layout_constraintEnd_toStartOf="@id/tvVEditProLastName"
@@ -518,25 +551,21 @@
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/etVEditProDescriptionThird"
                             android:layout_width="match_parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescriptionThird"
+                            app:layout_constraintStart_toStartOf="parent"
                             android:layout_height="@dimen/_100sdp"
                             android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="top"
+                            android:background="@drawable/forgot_email_bg"
+                            android:hint="@string/description_3"
+                            android:textColorHint="@color/gray"
+                            android:textColor="@color/light_black"
+                            android:textSize="14sp"
+                            android:textCursorDrawable="@drawable/color_cursor_black"
+                            android:text="@={vm.description3}"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:background="@drawable/forgot_email_bg"
-                            android:fontFamily="@font/inter_medium"
-                            android:gravity="top"
-                            android:hint="Description 3"
-                            android:inputType="text"
-                            android:text="@={vm.description3}"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:singleLine="false"
-                            android:textColor="@color/light_black"
-                            android:textColorHint="@color/gray"
-                            android:textCursorDrawable="@drawable/color_cursor_black"
-                            android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvVEditProDescriptionThird" />
+                            />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvVEditProExpiryDate"
@@ -593,7 +622,7 @@
                 android:gravity="center"
                 android:onClick="@{vm::onClicks}"
                 android:paddingBottom="@dimen/_1sdp"
-                android:text="@string/post"
+                android:text="@={vm.postdata}"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="14sp"

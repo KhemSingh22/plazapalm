@@ -82,7 +82,9 @@ class DashBoardVM @Inject constructor(
         token.set(pref.retrieveKey("token"))
 
         if (status.get().toString().equals("OPEN")) {
+
             getProfileByCategory()
+
         } else {
             dataList.add(
                 DashBoardModel(

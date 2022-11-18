@@ -47,6 +47,7 @@ class RecyclerAdapter<T : AbstractModel>(@LayoutRes val layoutId: Int) :
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: VH<T>, position: Int) {
+
 //        holder.itemView.animation =
 //           AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_anim)
         try {
@@ -61,6 +62,7 @@ class RecyclerAdapter<T : AbstractModel>(@LayoutRes val layoutId: Int) :
 
         }
     }
+
     private fun setAnimation(holder: RecyclerView.ViewHolder, position: Int) {
         if (this.animatedPosition.contains(Integer.valueOf(position))) {
             holder.itemView.clearAnimation()

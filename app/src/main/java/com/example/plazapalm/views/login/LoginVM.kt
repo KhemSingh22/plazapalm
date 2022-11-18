@@ -28,11 +28,11 @@ class LoginVM @Inject constructor(
     private var repository: Repository,
     private var dataStore: DataStoreUtil,
     private var cacheUtil: CacheUtil,
-    private var preferences: PreferenceFile
-) : ViewModel() {
+    private var preferences: PreferenceFile) : ViewModel() {
     var email = ObservableField("")
     var password = ObservableField("")
     var sendTypeLogin = ObservableField("Login")
+
     fun clicks(view: View) {
         when (view.id) {
             R.id.clMainLogin -> {
@@ -101,6 +101,7 @@ class LoginVM @Inject constructor(
                                 CommonMethods.context,
                                 res.body()?.message.toString()
                             )
+
                         } else {
                             val bundle = Bundle()
                             bundle.putString("comingFrom", "login")

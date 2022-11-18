@@ -9,6 +9,8 @@ const val FOREVER_DATA_STORE_NAME = "ForeverBaronCustomer"
 val THEME_KEY by lazy { stringPreferencesKey("theme_key") }
 val BOOLEAN_DATA by lazy { booleanPreferencesKey("BOOLEAN") }
 val LOGIN_DATA by lazy { stringPreferencesKey("LOGIN_DATA") }
+val POST_PROFILE_DATA by lazy { stringPreferencesKey("POST_PROFILE_DATA") }
+val UPDATE_USER_POST_PROFILE by lazy { stringPreferencesKey("POST_PROFILE_DATA") }
 val PROFILE_DATA by lazy { stringPreferencesKey("PROFILE_DATA") }
 val PROFILE_IMAGE by lazy { stringPreferencesKey("PROFILE_IMAGE") }
 val ADD_PHOTO_URI by lazy { stringPreferencesKey("ADD_PHOTO_URI") }

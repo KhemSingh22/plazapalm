@@ -46,7 +46,8 @@ class EditProfileFragment : Fragment(R.layout.edit_profile_fragment) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = EditProfileFragmentBinding.inflate(inflater, container, false)
+//        binding = EditProfileFragmentBinding.inflate(inflater, container, false)
+        binding = EditProfileFragmentBinding.inflate(inflater)
          setProfileImage()
        // getMainActivityData()
         CommonMethods.statusBar(true)
@@ -63,16 +64,18 @@ class EditProfileFragment : Fragment(R.layout.edit_profile_fragment) {
         super.onResume()
         checkCameraPermission()
     }
+
     private fun onClicks() {
         binding?.ivEditProfileCamera?.setOnClickListener {
+            Log.e("SD","SDDSSD")
             showCameraGalleryEditProfile()
         }
     }
     private fun checkCameraPermission() {
-        if (ContextCompat.checkSelfPermission(CommonMethods.context, Manifest.permission.CAMERA,) != PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
-                CommonMethods.context,
+               requireActivity(),
                 arrayOf(
                     Manifest.permission.CAMERA,
                     Manifest.permission.READ_EXTERNAL_STORAGE,

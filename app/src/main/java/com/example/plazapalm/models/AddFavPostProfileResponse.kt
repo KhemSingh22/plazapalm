@@ -1,7 +1,6 @@
 package com.example.plazapalm.models
 
-data class UploadMediaResponse(
-    val data: ArrayList<String>,
+data class AddFavPostProfileResponse(
     val message: String,
     val status: Int
 )

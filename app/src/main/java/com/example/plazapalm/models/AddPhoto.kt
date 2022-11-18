@@ -3,7 +3,7 @@ package com.example.plazapalm.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class AddPhoto(var Image : String? = "") : Parcelable {
+data class AddPhoto(var Image : String? = "",var isValid:Boolean?=false) : Parcelable {
     constructor(parcel: Parcel) : this(parcel.readString()) {
     }
 

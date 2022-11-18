@@ -486,6 +486,15 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_favDetailsFragment_to_postProfileFragment"
+            app:destination="@id/postProfileFragment"
+            app:enterAnim="@anim/pop_enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/favDetailsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/reportChooseOptionFragment"

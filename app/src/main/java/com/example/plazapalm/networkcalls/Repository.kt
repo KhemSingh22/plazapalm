@@ -74,11 +74,13 @@ class Repository @Inject constructor(
                 hideProgress()
                 //activity.showNegativeAlerter(exception.message ?: "")
                 showErrorDialog()
-            }.collect { response ->
+            }.collect {
+                    response ->
                 Log.d("resCodeIs", "====${response?.code()}")
                 Timer().schedule(2000) {
                     hideProgress()
                 }
+
                 when {
                     response?.code() in 100..199 -> {
                         /**Informational*/
@@ -96,6 +98,7 @@ class Repository @Inject constructor(
                             cacheUtil.put(apiKey, response)
                         requestProcessor.onResponse(response as Response<T>)
                     }
+
                     response?.code() in 300..399 -> {
                         /**Redirection*/
                         requestProcessor.onError(
@@ -136,7 +139,31 @@ class Repository @Inject constructor(
                     }
                     else -> {
                         /**ClientErrors*/
-                        val res = response?.errorBody()!!.string()
+                        try {
+                            val res = response?.errorBody()!!.string()
+                            val jsonObject = JSONObject(res)
+                            when {
+                                jsonObject.has("message") -> {
+                                    requestProcessor.onError(jsonObject.getString("message"))
+                                    if (!jsonObject.getString("message").equals("Data not found", true))
+                                        Toast.makeText(
+                                            MainActivity.context.get(),
+                                            jsonObject.getString("message"),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    //activity.showNegativeAlerter(jsonObject.getString("message"))
+                                }
+                                else -> {
+                                    requestProcessor.onError(
+                                        activity.resources?.getString(R.string.some_error_occured) ?: ""
+                                    )
+                                    // activity.showNegativeAlerter(activity.resources?.getString(R.string.some_error_occured) ?: "")
+                                }
+                            }
+                        } catch (e:Exception){
+                            print(e.message)
+                        }
+                       /* val res = response?.errorBody()!!.string()
                         val jsonObject = JSONObject(res)
                         when {
                             jsonObject.has("message") -> {
@@ -155,7 +182,7 @@ class Repository @Inject constructor(
                                 )
                                 // activity.showNegativeAlerter(activity.resources?.getString(R.string.some_error_occured) ?: "")
                             }
-                        }
+                        }*/
                     }
                 }
             }

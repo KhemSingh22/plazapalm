@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +14,6 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.plazapalm.R
-import com.example.plazapalm.models.CategoriesData
 import com.example.plazapalm.models.GetProfileData
 import com.example.plazapalm.networkcalls.IMAGE_LOAD_URL
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,7 +24,6 @@ import me.relex.circleindicator.CircleIndicator
 
 /** Binding Adapters */
 object BindingAdapters {
-
     @BindingAdapter(value = ["setRecyclerAdapter"], requireAll = false)
     @JvmStatic
     fun setRecyclerAdapter(
@@ -55,8 +52,6 @@ object BindingAdapters {
         circleDotIndicator.setViewPager(vp)
     }
 
-
-
     @BindingAdapter(value = ["addScrollListener"], requireAll = false)
     @JvmStatic
     fun addScrollListener(
@@ -75,8 +70,6 @@ object BindingAdapters {
          otpView.setOtpCompletionListener(listener)
      }*/
 
-
-
     @BindingAdapter(value = ["bottomNavigationListener"], requireAll = false)
     @JvmStatic
     fun bottomNavigationListener(
@@ -85,8 +78,6 @@ object BindingAdapters {
     ) {
         bottomNavigationView.setOnNavigationItemSelectedListener(listener)
     }
-
-
 
     @RequiresApi(Build.VERSION_CODES.M)
     @BindingAdapter(value = ["setColorOfText"], requireAll = false)
@@ -98,7 +89,6 @@ object BindingAdapters {
         textView.setTextColor(textView.context.getColor(color))
     }
 
-
     @BindingAdapter(value = ["onCheckChange"], requireAll = false)
     @JvmStatic
     fun onCheckChange(
@@ -107,22 +97,20 @@ object BindingAdapters {
     ) {
         compoundButton.setOnCheckedChangeListener(listener)
     }
+
     @SuppressLint("CheckResult")
     @BindingAdapter(value = ["setCircleImage"], requireAll = false)
     @JvmStatic
     fun setCircleImage(
         circleImage: CircleImageView,
-        imageUrl: String?
-    ) {
-        Log.e("AAAAA",imageUrl.toString() + "CC")
+        imageUrl: String? ) {
+        Log.e("VVVVV",IMAGE_LOAD_URL + imageUrl)
         if (imageUrl != null) {
             Glide.with(CommonMethods.context)
                 .load(IMAGE_LOAD_URL + imageUrl)
                 .error(R.drawable.ic_place_holder)
                 .into(circleImage)
-        }
-        else
-        {
+        } else {
             // circleImage.resources.getDrawable(R.drawable.ic_place_holder)
             //circleImage.setImageResource(R.drawable.ic_place_holder)
         }
@@ -148,6 +136,7 @@ object BindingAdapters {
 
     @BindingAdapter(value = ["radioGroupListener"], requireAll = false)
     @JvmStatic
+
     fun radioGroupListener(
         view: RadioGroup,
         listener: RadioGroup.OnCheckedChangeListener
@@ -191,25 +180,4 @@ object BindingAdapters {
         //swipeRefreshLayout.isRefreshing = false
     }*/
 
-
-    @BindingAdapter(value = ["setCheckChanged"], requireAll = false)
-    @JvmStatic
-    fun setCheckChanged(
-        checkBox: AppCompatCheckBox,
-        isCheck: Boolean
-    ) {
-        checkBox.isChecked=isCheck
-    }
-
-    @BindingAdapter("visible_checkbox")
-    fun bindVisible(checkBox: AppCompatCheckBox, visible: Boolean) {
-     //   set visibility according to the boolean
-      //  checkBox.isCheck=visible
-        checkBox.setOnClickListener {
-            if(checkBox.isChecked)
-            {
-
-            }
-        }
-    }
 }

@@ -1,6 +1,7 @@
 package com.example.plazapalm.views.editprofile
 
 import android.content.pm.PackageManager
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -109,6 +110,7 @@ class EditProfileVM @Inject constructor(
     fun uploadImage(file: File) = viewModelScope.launch {
         val requestBody: RequestBody = imageFile!!.asRequestBody("image/*".toMediaTypeOrNull())
         val imageToUpload = createFormData("profile_picture", imageFile?.name, requestBody)
+
         repository.makeCall(
             apiKey = ApiEnums.UPLOAD_IMAGES,
             loader = true,
@@ -121,6 +123,8 @@ class EditProfileVM @Inject constructor(
 
                 override fun onResponse(res: Response<UploadMediaResponse>) {
                     profile_pic.set(res.body()?.data?.get(0)!!)
+                    Log.e("SDFSDFSDFsdf",res.body()?.data?.get(0)!!)
+
                 }
             })
     }

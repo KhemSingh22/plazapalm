@@ -22,6 +22,11 @@
     <string name="choose_categeory">Choose categeory</string>
     <string name="search_for_location">Search for location</string>
     <string name="thank_you">Thank You</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure_you_want_to_delete_n_the_profile">Are you sure you want to delete \n the profile?</string>
+    <string name="description_2">Description 2</string>
+    <string name="description_3">Description 3</string>
+    <string name="description2">Description2</string>
 
 
 </resources>

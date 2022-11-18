@@ -76,6 +76,7 @@ object Constants {
     // pref keys\
 
     const val POSTSTATUS = "POSTSTATUS"
+    const val POSTRESPONSE = "POSTRESPONSE"
     const val FROM_MY_PROFILE = "FROM_MY_PROFILE"
 
 }

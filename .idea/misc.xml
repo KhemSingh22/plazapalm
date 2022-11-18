@@ -65,8 +65,14 @@
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/contact_us_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/dash_board_events_items.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/dash_board_fragment.xml" value="0.20416666666666666" />
-        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/edit_profile_fragment.xml" value="0.25" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/delete_postprofile.xml" value="0.203125" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/edit_front_page_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/edit_profile_fragment.xml" value="0.2" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fav_details_choose_options.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fav_details_fragment.xml" value="0.25" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fav_temp.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/favourites_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/favourites_list_items.xml" value="0.1" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/filter_catergories_item.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fragment_details_categeroy.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/fragment_open_categeroy.xml" value="0.1" />
@@ -74,8 +80,9 @@
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/my_proifle_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/open_camera_and_gallery.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/pictures_item_list.xml" value="0.20416666666666666" />
-        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/post_profile_fragment.xml" value="0.2" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/post_profile_fragment.xml" value="0.25" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/progress_loading.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/repository_alert.xml" value="0.12135416666666667" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/settings_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/signup_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/slect_cate_items.xml" value="0.1796875" />
@@ -83,6 +90,8 @@
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/verify_email_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/view_profile_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/view_profile_images_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/view_profile_videos_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/layout/viewprofile_chooseoption.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/plazapalam/PlazaPalm@18Oct/PlazaPalm/app/src/main/res/xml/file_paths.xml" value="0.20416666666666666" />
       </map>

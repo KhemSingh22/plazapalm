@@ -7,7 +7,8 @@
 
         <variable
             name="model"
-            type="com.example.plazapalm.models.DashBoardModel" />
+            type="com.example.plazapalm.models.FavData" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,13 +29,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dash_board_items_bg">
 
+
+            //                 setFavImage="@{model.postProfile_picture[0]}"
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivFavItem"
-                setDrawable="@{model.image}"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
                 android:scaleType="fitXY"
-                android:src="@drawable/electrician_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +51,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <View
                 android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                 android:layout_margin="@dimen/_3sdp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_horizontal"
-                android:text="@={model.name}"
+                android:text="@{model.user_name}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +103,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/inter_medium"
                 android:singleLine="true"
-                android:text="@={model.description}"
+                android:text="@{model.description_1}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/tvFavItemLocation"
@@ -117,7 +118,7 @@
                 android:layout_marginBottom="@dimen/_3sdp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="start"
-                android:text="@={model.locationName}"
+                android:text="@{model.location_text}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -132,7 +133,7 @@
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_horizontal"
-                android:text="@{model.miles+ ` ` + `miles`}"
+                android:text="5 Miles"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/tvFavItemLocation"

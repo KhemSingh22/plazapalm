@@ -5,10 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class DataStoreUtil @Inject constructor(
@@ -21,6 +18,7 @@ class DataStoreUtil @Inject constructor(
             dataStore.edit { preferences ->
                 preferences[key] = value
             }
+
         }
     }
     /** SavePhoto*/

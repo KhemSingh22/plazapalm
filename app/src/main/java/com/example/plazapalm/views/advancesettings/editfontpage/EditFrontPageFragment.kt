@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class EditFrontPageFragment : Fragment(R.layout.edit_front_page_fragment) {
 
-
     private var binding: EditFrontPageFragmentBinding? = null
     private val viewModel: EditFrontPageVM by viewModels()
     override fun onCreateView(

@@ -24,4 +24,5 @@ fun hideProgress() {
     if (customDialog != null && customDialog?.isShowing!!) {
         customDialog?.dismiss()
     }
+
 }

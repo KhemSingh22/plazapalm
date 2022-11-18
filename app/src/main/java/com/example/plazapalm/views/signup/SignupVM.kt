@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
@@ -144,6 +145,9 @@ class SignupVM @Inject constructor(
                                 bundle.putString("email", email.get())
                                 CommonMethods.showToast(CommonMethods.context, res.body()?.message.toString())
                                 view.navigateWithId(R.id.action_signUpFragment_to_verifyEmailFragment, bundle)
+
+                                Log.e("RESSPONSEE" ,res.body().toString())
+
                             }
                             else
                             {

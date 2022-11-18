@@ -3,6 +3,7 @@ package com.example.plazapalm.views.myprofile
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -36,25 +37,25 @@ class MyProfileVM @Inject constructor(
 
     var premium : Int? = null
     var loginData = ObservableField("")
-    var firstName = ObservableField("")
+    var firstName = ObservableField("first name")
     var storedImageUrl = ObservableField("")
     val qrCodeScanner : QrCodeScannerFragment by lazy { qrCodeScanner }
     var token = ObservableField("")
     var status = ObservableField("Post a Profile ")
-    var changestatus =false
+    var changestatus = ObservableBoolean(false)
 
     init {
 
         token.set(pref.retrieveKey("token"))
+
         if(pref.retrieveBoolKey(Constants.POSTSTATUS)!!.equals(true)){
-            status.set("View Profile ")
-            changestatus = true
+            changestatus.set(true)
         }else{
-            status.set("Post a Profile")
-            changestatus = false
+            changestatus.set(false)
         }
 
         //saveProfileImageUrl()
+
         getProfileImageUrl()
     }
 
@@ -68,16 +69,23 @@ class MyProfileVM @Inject constructor(
                 view.navigateWithId(R.id.action_myProfileFragment_to_editProfileFragment)
             }
             R.id.tvViewMyProfile -> {
-                if (changestatus.equals(true)){
+                val bundle = Bundle()
 
-                    val bundle = Bundle()
-                    bundle.putString(Constants.FROM_MY_PROFILE,"ViewProfile")
+                if (changestatus.get()){
+
+                    bundle.putString("comingFrom","isViewProfile")
+                    status.set("View Profile ")
                     view.navigateWithId(R.id.action_myProfileFragment_to_favDetailsFragment,bundle)
 
-                }else{
+                } else {
+
+                    status.set("Post a Profile ")
+                    bundle.putString(Constants.FROM_MY_PROFILE,"PostProfile")
                     view.navigateWithId(R.id.action_myProfileFragment_to_viewProfileFragment)
+
                 }
             }
+
             R.id.tvCalendar -> {
                 view.navigateWithId(R.id.action_myProfileFragment_to_calendarFragment)
             }
@@ -117,6 +125,7 @@ class MyProfileVM @Inject constructor(
                     return retrofitApi.getProfileApi(Authorization = token.get().toString())
                 }
                 override fun onResponse(res: Response<GetProfileResponseModel>) {
+
                     val responseData = res.body()
                     dataStoreUtil.saveObject(PROFILE_DATA, res.body())
                     dataStoreUtil.saveData(PROFILE_IMAGE,
@@ -147,7 +156,7 @@ class MyProfileVM @Inject constructor(
         dataStoreUtil.readObject(PROFILE_DATA, GetProfileResponseModel::class.java) {
             firstName.set(it?.data?.first_name.toString() + " " + " " + it?.data?.last_name.toString())
 
-            // storedImageUrl.set(it?.data?.profile_picture)
+             storedImageUrl.set(it?.data?.profile_picture)
 
             /* if (it?.data?.profile_picture != null) {
                 storedImageUrl.set(it.data.profile_picture)

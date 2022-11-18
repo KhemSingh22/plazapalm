@@ -11,16 +11,17 @@ import com.bumptech.glide.Glide
 import com.example.plazapalm.databinding.AddPhotosItemListBinding
 import com.example.plazapalm.interfaces.ItemClickListener
 import com.example.plazapalm.models.AddPhoto
+import com.example.plazapalm.networkcalls.IMAGE_LOAD_URL
 import java.io.File
 
 class AddPhotosAdapter(
     val activity: FragmentActivity,
-    var photos: ArrayList<String>,
+    var photos: ArrayList<AddPhoto>,
     var itemClickListener: ItemClickListener
       ) : RecyclerView.Adapter<AddPhotosAdapter.ViewHolder>() {
      var poss : Int? = null
     @SuppressLint("NotifyDataSetChanged")
-    fun updateList(picturesList: ArrayList<String>, pos: Int) {
+    fun updateList(picturesList: ArrayList<AddPhoto>, pos: Int) {
         poss = pos
         photos = picturesList
         notifyDataSetChanged()
@@ -53,17 +54,27 @@ class AddPhotosAdapter(
     inner class ViewHolder(var bindining: AddPhotosItemListBinding) :
         RecyclerView.ViewHolder(bindining.root) {
 
-        fun setImage(context: Context, img: String,photos:ArrayList<String>,position:Int
+        fun setImage(context: Context, photos:ArrayList<AddPhoto>,position:Int
         ) {
-            Log.e("SSSSS", img)
 
-            Glide
-                .with(context)
-                .load(File(img))
-                .centerCrop()
-                .into(bindining.setimageView)
+            if(photos[position].isValid==true)
+            {
+                Glide
+                    .with(context)
+                    .load(IMAGE_LOAD_URL+photos[position].Image)
+                    .centerCrop()
+                    .into(bindining.setimageView)
+            }else
+            {
+                Glide
+                    .with(context)
+                    .load(File(photos[position].Image))
+                    .centerCrop()
+                    .into(bindining.setimageView)
+            }
 
-             if (photos[position].toString()==""){
+
+             if (photos[position].Image==""){
                  bindining.plusIcon.visibility = View.VISIBLE
              }else
              {
@@ -81,7 +92,7 @@ class AddPhotosAdapter(
         holder.bindining.clAddPhoto.setOnClickListener {
             itemClickListener.onClick(it, "addPhotos", position)
         }
-        holder.setImage(activity, photos[position].toString()!!,photos,position)
+        holder.setImage(activity,photos,position)
     }
 }
 

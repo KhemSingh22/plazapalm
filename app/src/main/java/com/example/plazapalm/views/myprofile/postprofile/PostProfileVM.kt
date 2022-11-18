@@ -1,7 +1,6 @@
 package com.example.plazapalm.views.myprofile.postprofile
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -15,15 +14,15 @@ import android.view.Window
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableParcelable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.plazapalm.R
 import com.example.plazapalm.datastore.DataStoreUtil
-import com.example.plazapalm.models.AddPhoto
-import com.example.plazapalm.models.SavePostProfileResponse
-import com.example.plazapalm.models.ValidateUserNameResponse
-import com.example.plazapalm.models.ViewProfileData
+import com.example.plazapalm.datastore.POST_PROFILE_DATA
+import com.example.plazapalm.datastore.UPDATE_USER_POST_PROFILE
+import com.example.plazapalm.models.*
 import com.example.plazapalm.networkcalls.ApiEnums
 import com.example.plazapalm.networkcalls.ApiProcessor
 import com.example.plazapalm.networkcalls.Repository
@@ -54,7 +53,7 @@ class PostProfileVM @Inject constructor(
     var dataStoreUtil: DataStoreUtil,
     var pref: PreferenceFile
 
-) : ViewModel() {
+    ) : ViewModel() {
     var firstName = ObservableField("")
     var lastName = ObservableField("")
     var userName = ObservableField("")
@@ -69,45 +68,29 @@ class PostProfileVM @Inject constructor(
     var token = ObservableField("")
     var categeory = ObservableField("")
     var c_id = ObservableField("")
-     var datePicker: DatePickerHelper?=null
-    var listData = ObservableField("")
-    var photoList: ArrayList<String>? = null
+    var p_id = ObservableField("")
+    var _id = ObservableField("")
+    var postdata = ObservableField("Post")
+    var datePicker: DatePickerHelper? = null
+    var userdata = ObservableParcelable<postData>()
+    var photoList: ArrayList<AddPhoto>? = null
 
-    //    var photoList: ArrayList<AddPhoto>? = null
     var imagesList = ArrayList<AddPhoto>()
     var location = ObservableField("")
     var isClicked: ObservableBoolean = ObservableBoolean(false)
 
-    init {
-
-
-        /*dataStoreUtil.readObject(LOGIN_DATA, LoginDataModel::class.java) {
-           // firstName.set(it?.data?.first_name.toString())
-         //   lastName.set(it?.data?.last_name.toString())
-            userName.set(it?.data?.user_name.toString())
-            profileTitle.set(it?.data?.profileTitle.toString())
-            address.set(it?.data?.address.toString())
-        }
-
-        dataStoreUtil.readObject(PROFILE_DATA, GetProfileResponseModel::class.java) {
-            firstName.set(it?.data?.first_name.toString())
-            lastName.set(it?.data?.last_name.toString())
-
-        }*/
-
-    }
 
     init {
         token.set(pref.retrieveKey("token"))
-
     }
 
     fun onTextChange(editable: Editable) {
-        if (editable.length > 4) {
-            Handler().postDelayed({
-
-                uservalidation(editable)
-            }, 1000)
+        if (postdata.get().toString().equals("Post")) {
+            if (editable.length > 4) {
+                Handler().postDelayed({
+                    uservalidation(editable)
+                }, 1000)
+            }
         }
 
         Log.e("QQWQWQw", editable.toString())
@@ -135,6 +118,8 @@ class PostProfileVM @Inject constructor(
                                 CommonMethods.showToast(
                                     CommonMethods.context,
                                     res.body()?.message.toString()
+
+
                                 )
                                 Log.e("QQQQ", res.body()!!.message)
                             }
@@ -179,15 +164,14 @@ class PostProfileVM @Inject constructor(
             R.id.clViewEditProfileAdd -> {
                 isClicked.set(true)
 
-                if(photoList==null)
-                {
-                    photoList=ArrayList<String>()
+                if (photoList == null) {
+                    photoList = ArrayList<AddPhoto>()
                 }
 
-                var bundle=Bundle()
-                  bundle.putStringArrayList("imageList",photoList)
-                    view.navigateWithId(R.id.action_viewProfileFragment_to_addPhotosFragment,bundle)
-                    Log.e("SDDDDDDDssss","data list is empty ")
+                var bundle = Bundle()
+                bundle.putParcelableArrayList("imageList", photoList)
+                view.navigateWithId(R.id.action_viewProfileFragment_to_addPhotosFragment, bundle)
+                Log.e("SDDDDDDDssss", "data list is empty ")
 
             }
 
@@ -211,8 +195,26 @@ class PostProfileVM @Inject constructor(
 
                 if (CommonMethods.context.isNetworkAvailable()) {
                     if (validation()) {
-                        SaveProfileApi(view)
+
+                        var newList=ArrayList<String>()
+                        newList.clear()
+                        if(photoList!!.size>0) {
+                            for(idx in 0 until photoList!!.size)
+                            {
+                                newList.add(photoList!![idx].Image.toString())
+                            }
+                        }
+                        Log.e("ASSSSSSSSSSSSSSSS" , newList.toString())
+
+                        if (postdata.get().toString().equals("Post")) {
+                            SavePostProfileAPI(view, newList)
+                        } else if (postdata.get().toString().equals("Update")) {
+                            editProfileAPI(view, newList)
+                        }
+
+//                        UploadMedia(view)
                     }
+
                 } else {
                     CommonMethods.showToast(CommonMethods.context, Constants.CHECK_INTERNET)
                 }
@@ -221,38 +223,152 @@ class PostProfileVM @Inject constructor(
 
                 showDatePickerDialog()
 
-//                val c = Calendar.getInstance()
-//                val year = c.get(Calendar.YEAR)
-//                val month = c.get(Calendar.MONTH)
-//                val day = c.get(Calendar.DAY_OF_MONTH)
-//
-//
-//                val dpd = DatePickerDialog(
-//                    CommonMethods.context,
-//                    R.style.CalenderViewCustom_,
-//                    DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-//
-//                        // Display Selected date in textbox
-//                        expireDate.set("" + year + "-" + monthOfYear + "-" + dayOfMonth)
-//
-//                    },
-//                    year,
-//                    month,
-//                    day
-//                )
-//
-//                dpd.show()
+
             }
-
-
-            /*  R.id.btnViewEditProfile -> {
-                  view.findNavController().navigateUp()
-              }*/
         }
     }
 
-    private fun SaveProfileApi(view: View) = viewModelScope.launch {
+    private fun editProfileAPI(view: View, data: ArrayList<String>) {
+        repository.makeCall(
+            ApiEnums.UPDATE_POST_PROFILE,
+            loader = true,
+            saveInCache = false,
+            getFromCache = false,
+            requestProcessor = object : ApiProcessor<Response<UpdateProfileResponse>> {
+                override suspend fun sendRequest(retrofitApi: RetrofitApi): Response<UpdateProfileResponse> {
+                    return retrofitApi.UpdatepostProfile(
+                        pref.retrieveKey("token").toString(),
+                        firstName.get(),
+                        lastName.get(),
+                        long.get(),
+                        expireDate.get(),
+                        address.get(),
+                        location.get(),
+                        data!!,
+                        userName.get()!!,
+                        "jkj",
+                        description2.get(),
+                        description1.get(),
+                        description3.get(),
+                        lat.get(),
+                        profileTitle.get(),
+                        c_id.get().toString(),
+                        p_id.get()
+                    )
+                }
 
+                override fun onResponse(res: Response<UpdateProfileResponse>) {
+                    if (res.isSuccessful) {
+                        if (res.body() != null) {
+                            if (res.code() == 200) {
+                                Log.e("DSFFSSSAAAA", res.body().toString())
+                                CommonMethods.showToast(CommonMethods.context, res.body()!!.message)
+                                view.navigateBack()
+                                dataStoreUtil.saveObject(UPDATE_USER_POST_PROFILE, res.body())
+
+                            } else {
+                                CommonMethods.showToast(CommonMethods.context, res.body()!!.message)
+                            }
+                        } else {
+                            CommonMethods.showToast(CommonMethods.context, res.body()!!.message)
+                        }
+                    } else {
+                        CommonMethods.showToast(CommonMethods.context, res.message())
+                    }
+                }
+
+            })
+
+    }
+
+    private fun UploadMedia(view: View) = viewModelScope.launch {
+
+        var surveyImagesParts: Array<MultipartBody.Part?>? = null
+
+
+        var tempList = photoList!!.filter { it.isValid==false } as ArrayList<AddPhoto>
+
+
+        if (tempList!!.size > 0) {
+
+            surveyImagesParts = arrayOfNulls<MultipartBody.Part>(tempList?.size!!)
+
+            for (index in 0 until tempList!!.size) {
+                val file = File(
+                    tempList!!
+                        .get(index)
+//                        .toString()
+                      .Image!!
+                )
+
+
+                val surveyBody: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+                surveyImagesParts[index] = createFormData("profile_picture", file.name, surveyBody)
+                Log.e("SDDDSS-----SSSS", tempList.toString())
+
+
+            }
+
+
+            repository.makeCall(
+            apiKey = ApiEnums.UPLOAD_IMAGES,
+            loader = true,
+            saveInCache = false,
+            getFromCache = false,
+            requestProcessor = object : ApiProcessor<Response<UploadMediaResponse>> {
+                override suspend fun sendRequest(retrofitApi: RetrofitApi): Response<UploadMediaResponse> {
+                    return retrofitApi.uploadMediaPostProfile(
+                        Authorization = token.get(), surveyImagesParts!!
+                    )
+                }
+
+                override fun onResponse(res: Response<UploadMediaResponse>) {
+                    Log.e("HEADERR", res.body().toString())
+
+                   var previousSelectedPhotos = photoList!!.filter { it.isValid==true } as ArrayList<AddPhoto>
+                    var newList=ArrayList<String>()
+                    newList.clear()
+                    if(previousSelectedPhotos.size>0) {
+                        for(idx in 0 until previousSelectedPhotos.size)
+                        {
+                            newList.add(previousSelectedPhotos[idx].Image.toString())
+                        }
+                    }
+
+                    if(res.body()!!.data.size>0)
+                     {
+                        for(idx in 0 until res.body()!!.data.size)
+                        {
+                            newList.add(res.body()!!.data[idx].toString())
+                        }
+                    }
+                    if (postdata.get().toString().equals("Post")) {
+                        SavePostProfileAPI(view, newList)
+                    } else if (postdata.get().toString().equals("Update")) {
+                        editProfileAPI(view, newList)
+                    }
+                }
+            })
+
+    } else {
+
+           val data_list = ArrayList<String>()
+            for (idx in 0 until photoList!!.size){
+                data_list.add(photoList!!.get(idx).Image.toString())
+            }
+
+            Log.e("DSFSFSFSFSFSF",data_list.toString())
+
+            if (postdata.get().toString().equals("Post")) {
+                SavePostProfileAPI(view, data_list)
+            } else if (postdata.get().toString().equals("Update")) {
+                editProfileAPI(view, data_list)
+            }
+
+        }
+    }
+
+    private fun SavePostProfileAPI(view: View, data: ArrayList<String>) {
         val body = JSONObject()
         body.put(Constants.FIRST_NAME, firstName.get())
         body.put(Constants.LAST_NAME, lastName.get())
@@ -270,6 +386,7 @@ class PostProfileVM @Inject constructor(
         body.put(Constants.PROFILE_TITLE, profileTitle.get())
         body.put(Constants.C_ID, c_id.get())
 
+        Log.e("WORKINNGG",data.toString())
         val logintoken = token.set(pref.retrieveKey("token"))
         var firatname: RequestBody? = null
         var lastname: RequestBody? = null
@@ -300,7 +417,8 @@ class PostProfileVM @Inject constructor(
                 .toString() + " TTKKDKDKK " + profileTitle.get()
                 .toString() + " TTKKDKDKK " + description1.get().toString() +
                     " TTKKDKDKK " + description1.get().toString() + " TTKKDKDKK " +
-                    token.get().toString() + " TTKKDKDKK " + c_id.get().toString()
+                    token.get().toString() + " TTKKDKDKK " + c_id.get()
+                .toString() + "IMAGE----URL" + data.toString()
         )
 
         try {
@@ -327,28 +445,6 @@ class PostProfileVM @Inject constructor(
             e.printStackTrace()
         }
 
-        var surveyImagesParts: Array<MultipartBody.Part?>? = null
-        /// Implement imageslist
-        //   photoList = ArrayList<AddPhoto>()
-        if (photoList!!.size > 0) {
-            surveyImagesParts = arrayOfNulls<MultipartBody.Part>(photoList?.size!!)
-            for (index in 0 until photoList!!.size) {
-                val file = File(
-                    photoList!!
-                        .get(index)
-                        .toString()
-                    //  .Image!!
-                )
-
-                val surveyBody: RequestBody = RequestBody.create(
-                    "image/*".toMediaTypeOrNull(),
-                    file
-                )
-                surveyImagesParts[index] = createFormData("image_url", file.name, surveyBody)
-
-            }
-        }
-
         repository.makeCall(
             ApiEnums.SAVE_POST_PROFILE,
             loader = true,
@@ -358,21 +454,21 @@ class PostProfileVM @Inject constructor(
                 override suspend fun sendRequest(retrofitApi: RetrofitApi): Response<SavePostProfileResponse> {
                     return retrofitApi.postProfile(
                         token.get().toString(),
-                        firatname,
-                        lastname,
-                        longi,
-                        expiredate,
-                        addresss,
-                        locationn,
-                        surveyImagesParts!! /*url*/,
-                        username,
-                        tags,
-                        desc1,
-                        desc2,
-                        desc3,
-                        lati,
-                        profiletitle,
-                        c_idd
+                        firstName.get().toString(),
+                        lastName.get().toString(),
+                        long.get()!!.toString(),
+                        expireDate.get().toString(),
+                        address.get().toString(),
+                        location.get().toString(),
+                        data!! /*url*/,
+                        userName.get().toString(),
+                        "tags",
+                        description1.get().toString(),
+                        description2.get().toString(),
+                        description3.get().toString(),
+                        lat.get()!!.toString(),
+                        profileTitle.get().toString(),
+                        c_id.get().toString()
                     )
 
                 }
@@ -388,7 +484,10 @@ class PostProfileVM @Inject constructor(
                                     res.body()?.message.toString()
                                 )
                                 view.navigateBack()
+
+                                dataStoreUtil.saveObject(POST_PROFILE_DATA, res.body())
                                 pref.storeBoolKey(Constants.POSTSTATUS, true)
+                                pref.storeResponse(res.body()!!)
 
                             } else {
                                 Log.e("sdsdsd1", res.message())
@@ -398,6 +497,9 @@ class PostProfileVM @Inject constructor(
                                     res.body()?.message.toString()
                                 )
                             }
+
+                        }else {
+                            CommonMethods.showToast(CommonMethods.context, res.body()!!.message)
                         }
 
                     } else {
@@ -531,7 +633,7 @@ class PostProfileVM @Inject constructor(
     }
 
     private fun showDatePickerDialog() {
-        datePicker = DatePickerHelper(CommonMethods.context,true)
+        datePicker = DatePickerHelper(CommonMethods.context, true)
         val cal = Calendar.getInstance()
         val d = cal.get(Calendar.DAY_OF_MONTH)
         val m = cal.get(Calendar.MONTH)
@@ -543,7 +645,7 @@ class PostProfileVM @Inject constructor(
                 val monthStr = if (mon < 10) "0${mon}" else "${mon}"
 //                tvDate.text = "${dayStr}-${monthStr}-${year}"
                 expireDate.set("" + year + "-" + monthStr + "-" + dayStr)
-                Log.e("SDSDSDSDSDSDSDSd",""+ year + "-" + monthStr + "-" + dayStr)
+                Log.e("SDSDSDSDSDSDSDSd", "" + year + "-" + monthStr + "-" + dayStr)
             }
         })
     }

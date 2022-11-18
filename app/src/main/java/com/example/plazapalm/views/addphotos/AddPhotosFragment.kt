@@ -22,7 +22,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.plazapalm.BuildConfig
@@ -32,40 +32,53 @@ import com.example.plazapalm.datastore.ADD_PHOTO_URI
 import com.example.plazapalm.datastore.DataStoreUtil
 import com.example.plazapalm.interfaces.ItemClickListener
 import com.example.plazapalm.models.AddPhoto
+import com.example.plazapalm.models.UploadMediaResponse
+import com.example.plazapalm.networkcalls.ApiEnums
+import com.example.plazapalm.networkcalls.ApiProcessor
+import com.example.plazapalm.networkcalls.Repository
+import com.example.plazapalm.networkcalls.RetrofitApi
 import com.example.plazapalm.pref.PreferenceFile
 import com.example.plazapalm.utils.CommonMethods
-import com.example.plazapalm.utils.navigateWithId
 import com.example.plazapalm.views.addphotos.adapter.AddPhotosAdapter
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Response
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
 class AddPhotosFragment : Fragment(R.layout.add_photos_fragment), ItemClickListener {
     @Inject
     lateinit var dataStoreUtil: DataStoreUtil
-    @Inject
-    lateinit var pref:PreferenceFile
 
-     var binding: AddPhotosFragmentBinding? = null
-     val viewModel: AddPhotosVM by viewModels()
+    @Inject
+    lateinit var pref: PreferenceFile
+
+    @Inject
+    lateinit var repository: Repository
+
+    var binding: AddPhotosFragmentBinding? = null
+    val viewModel: AddPhotosVM by viewModels()
     var photoFile: File? = null
     val GALARY_REQUEST_CODE = 201
-    var photoList: ArrayList<String> = ArrayList()
+    var photoList: ArrayList<AddPhoto> = ArrayList()
     lateinit var addPhotosAdapter: AddPhotosAdapter
     var dialog: Dialog? = null
-//  val addPhotosAdapter by lazy { AddPhotosAdapter(requireActivity(),this) }
+
+    //  val addPhotosAdapter by lazy { AddPhotosAdapter(requireActivity(),this) }
     val REQUEST_CODEE = 200
-     var pos: Int? = 0
-     lateinit var bundle: Bundle
-     val MY_CAMERA_PERMISSION_CODE = 100
+    var pos: Int? = 0
+    lateinit var bundle: Bundle
+    val MY_CAMERA_PERMISSION_CODE = 100
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,7 +86,8 @@ class AddPhotosFragment : Fragment(R.layout.add_photos_fragment), ItemClickListe
     ): View? {
         binding = AddPhotosFragmentBinding.inflate(layoutInflater)
 
-        photoList=requireArguments().getStringArrayList("imageList") as ArrayList<String>
+        photoList =
+            requireArguments().getParcelableArrayList<AddPhoto>("imageList") as ArrayList<AddPhoto>
 
 
         return binding?.root
@@ -82,7 +96,7 @@ class AddPhotosFragment : Fragment(R.layout.add_photos_fragment), ItemClickListe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.vm = viewModel
-      //  photoList = ArrayList()
+        //  photoList = ArrayList()
         bundle = Bundle()
         setAdapter()
         click()
@@ -93,60 +107,56 @@ class AddPhotosFragment : Fragment(R.layout.add_photos_fragment), ItemClickListe
 
 
 //            bundle?.putParcelableArrayList("Images",photoList)
-            Log.e("ASA",bundle!!.getString("khem").toString() + "VVVV")
 
 
-             var dataList=  photoList.filter { it.toString()!="" } as ArrayList<String>
+//             var dataList=  photoList.filter { it.Image!="" } as ArrayList<AddPhoto>
 
-            var arraylist=ArrayList<String>()
+            UploadMedia(requireView())
 
-            for(idx in 0 until photoList.size)
-            {
-                if(photoList[idx].toString()!="")
-                {
-                    arraylist.add(photoList[idx].toString().toString())
-                }
-            }
+            /*  var arraylist=ArrayList<AddPhoto>()
 
-            var gsonValue=Gson().toJson(arraylist)
+              for(idx in 0 until photoList.size)
+              {
+                  if(photoList[idx].Image!="")
+                  {
+                      arraylist.add(photoList[idx])
+                  }
+              }
 
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("photos",gsonValue)
-            findNavController().popBackStack()
+              Log.e("ASA",bundle!!.getString("khem").toString() + "VVVV")
 
-          //  bundle.putParcelableArrayList("photoList",dataList)
-          //  requireActivity().supportFragmentManager.popBackStack()
-//            view!!.findNavController().navigate(R.id.action_addPhotosFragment_to_postProfileFragment,bundle)
+
+              var gsonValue=Gson().toJson(arraylist)
+
+              findNavController().previousBackStackEntry?.savedStateHandle?.set("photos",gsonValue)
+              findNavController().popBackStack()
+
+            //  bundle.putParcelableArrayList("photoList",dataList)
+            //  requireActivity().supportFragmentManager.popBackStack()
+  //            view!!.findNavController().navigate(R.id.action_addPhotosFragment_to_postProfileFragment,bundle)*/
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setAdapter() {
 
-        binding?.rvAddPhotos?.layoutManager = GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
+        binding?.rvAddPhotos?.layoutManager =
+            GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
 
 
-        var numOfPhotos=6
-        var pendingPhoto=0
-        if(photoList.size>0) {
-             pendingPhoto = numOfPhotos - photoList.size
-        }else
-        {
-            pendingPhoto=6
+        var numOfPhotos = 6
+        var pendingPhoto = 0
+        if (photoList.size > 0) {
+            pendingPhoto = numOfPhotos - photoList.size
+        } else {
+            pendingPhoto = 6
         }
 
-        for(idx in 0 until pendingPhoto)
-        {
-            photoList.add("")
+        for (idx in 0 until pendingPhoto) {
+            photoList.add(AddPhoto("", false))
         }
 
-       /* photoList.add("")
-        photoList.add("")
-        photoList.add("")
-        photoList.add("")
-        photoList.add("")
-        photoList.add("")*/
-
-         addPhotosAdapter = AddPhotosAdapter(requireActivity(),photoList, this)
+        addPhotosAdapter = AddPhotosAdapter(requireActivity(), photoList, this)
         binding?.rvAddPhotos?.adapter = addPhotosAdapter
         binding?.rvAddPhotos?.adapter?.notifyDataSetChanged()
 
@@ -247,35 +257,34 @@ class AddPhotosFragment : Fragment(R.layout.add_photos_fragment), ItemClickListe
         if (resultCode == Activity.RESULT_OK && requestCode == GALARY_REQUEST_CODE && data != null) {
 
             val selectedImageURI: Uri = data.data!!
-           var file= getPath(selectedImageURI)
+            var file = getPath(selectedImageURI)
             photoList.removeAt(pos!!)
-            photoList.add(pos!!, file.toString())
-            addPhotosAdapter.updateList(photoList,pos!!)
-          //  bundle.putParcelableArrayList("photoList",photoList)
+            photoList.add(pos!!, AddPhoto(file.toString(), false))
+            addPhotosAdapter.updateList(photoList, pos!!)
+            //  bundle.putParcelableArrayList("photoList",photoList)
             //bundle.putString("DAMEO","DDDD")
-         //   pref.storeImage("ADD_PHOTO_URI",photoList)
+            //   pref.storeImage("ADD_PHOTO_URI",photoList)
             addPhotosAdapter.notifyDataSetChanged()
 
 
         } else if (requestCode == REQUEST_CODEE &&
-                resultCode == Activity.RESULT_OK
-            ) {
+            resultCode == Activity.RESULT_OK
+        ) {
 
-                if(photoFile!=null)
-                {
-                    //    Glide.with(this).load(photoFile).into(ivPhoto!!)
+            if (photoFile != null) {
+                //    Glide.with(this).load(photoFile).into(ivPhoto!!)
 //                    var photoFileData=Uri.fromFile(photoFile) as Uri
-                    var photoFileData=photoFile
-                    photoList.removeAt(pos!!)
-                    photoList.add(pos!!, photoFileData.toString())
-                    addPhotosAdapter.updateList(photoList, pos!!)
-                    addPhotosAdapter.notifyDataSetChanged()
-                  //  bundle.putParcelableArrayList("photoList",photoList)
-                 //   bundle.putString("DAMEO","xcxcxc")
-                    dataStoreUtil.savephoto(ADD_PHOTO_URI,photoList.toString())
+                var photoFileData = photoFile
+                photoList.removeAt(pos!!)
+                photoList.add(pos!!, AddPhoto(photoFileData.toString(), false))
+                addPhotosAdapter.updateList(photoList, pos!!)
+                addPhotosAdapter.notifyDataSetChanged()
+                //  bundle.putParcelableArrayList("photoList",photoList)
+                //   bundle.putString("DAMEO","xcxcxc")
+                dataStoreUtil.savephoto(ADD_PHOTO_URI, photoList.toString())
 
-                }
             }
+        }
     }
 
     fun getPath(uri: Uri?): String? {
@@ -305,4 +314,119 @@ class AddPhotosFragment : Fragment(R.layout.add_photos_fragment), ItemClickListe
             }
         }
     }
+
+    fun UploadMedia(view: View) = lifecycleScope.launch {
+
+        var surveyImagesParts: Array<MultipartBody.Part?>? = null
+
+        var tempList =
+            photoList!!.filter { it.isValid == false && it.Image != "" } as ArrayList<AddPhoto>
+
+
+        if (tempList!!.size > 0) {
+            Log.e("cXXZZZ", tempList.toString() + "VVVV")
+
+            surveyImagesParts = arrayOfNulls<MultipartBody.Part>(tempList?.size!!)
+
+            for (index in 0 until tempList!!.size) {
+
+                val file = File(
+                    tempList!!
+                        .get(index)
+//                      .toString()
+                        .Image!!
+
+                )
+
+                Log.e("SDDDOOPPPP", file.toString())
+                val surveyBody: RequestBody =
+                    RequestBody.create("image/*".toMediaTypeOrNull(), file)
+                surveyImagesParts[index] =
+                    MultipartBody.Part.createFormData("profile_picture", file.name, surveyBody)
+                Log.e("SDDDSS-----SSSS", surveyBody.toString())
+
+            }
+
+
+            repository.makeCall(
+                apiKey = ApiEnums.UPLOAD_IMAGES,
+                loader = true,
+                saveInCache = false,
+                getFromCache = false,
+                requestProcessor = object : ApiProcessor<Response<UploadMediaResponse>> {
+                    override suspend fun sendRequest(retrofitApi: RetrofitApi): Response<UploadMediaResponse> {
+                        return retrofitApi.uploadMediaPostProfile(
+                            Authorization = pref.retrieveKey("token"), surveyImagesParts!!
+                        )
+                    }
+
+                    override fun onResponse(res: Response<UploadMediaResponse>) {
+                        Log.e("HEADERR", res.body().toString())
+
+                        var previousSelectedPhotos = photoList!!.filter { it.isValid == true } as ArrayList<AddPhoto>
+                        var newList = ArrayList<String>()
+                        newList.clear()
+                        if (previousSelectedPhotos.size > 0) {
+                            for (idx in 0 until previousSelectedPhotos.size) {
+                                newList.add(previousSelectedPhotos[idx].Image.toString())
+                            }
+                        }
+
+                        if (res.body()!!.data.size > 0) {
+                            for (idx in 0 until res.body()!!.data.size) {
+                                newList.add(res.body()!!.data[idx].toString())
+                            }
+                        }
+
+                        var arraylist = ArrayList<AddPhoto>()
+
+                        for (idx in 0 until newList.size) {
+                            if (newList[idx].toString() != "") {
+                                arraylist.add(AddPhoto(newList[idx],true))
+                            }
+                        }
+
+                        Log.e("ASA", arraylist.toString() + "VVVV")
+
+                        CommonMethods.showToast(requireActivity(), "images uploaded")
+                        var gsonValue = Gson().toJson(arraylist)
+
+                        findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                            "photos",
+                            gsonValue
+                        )
+
+                        findNavController().popBackStack()
+
+                        //  bundle.putParcelableArrayList("photoList",dataList)
+                        //  requireActivity().supportFragmentManager.popBackStack()
+//            view!!.findNavController().navigate(R.id.action_addPhotosFragment_to_postProfileFragment,bundle)
+
+                    }
+
+                    override fun onError(message: String) {
+                        super.onError(message)
+                        CommonMethods.showToast(requireActivity(), message)
+
+                    }
+                })
+
+        } /*else {
+
+            val data_list = ArrayList<String>()
+            for (idx in 0 until photoList!!.size){
+                data_list.add(photoList!!.get(idx).Image.toString())
+            }
+
+            Log.e("DSFSFSFSFSFSF",data_list.toString())
+
+            if (postdata.get().toString().equals("Post")) {
+                SavePostProfileAPI(view, data_list)
+            } else if (postdata.get().toString().equals("Update")) {
+                editProfileAPI(view, data_list)
+            }
+
+        }*/
+    }
+
 }

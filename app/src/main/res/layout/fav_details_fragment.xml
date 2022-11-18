@@ -5,7 +5,6 @@
 
     <data>
 
-
         <variable
             name="vm"
             type="com.example.plazapalm.views.favourites.favdetails.FavDetailsVM" />
@@ -34,7 +33,7 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/inter_medium"
                     android:paddingVertical="@dimen/_1sdp"
-                    android:text="Vikas"
+                    android:text="@={vm.fav_title}"
                     android:textColor="@color/tool_bar_black_color"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +88,7 @@
                         android:id="@+id/ivFavDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/electrician_image"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -118,14 +117,13 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvFavDetailsAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_5sdp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="Los Angeles, CA"
+                        android:text="@={vm.tvFavDetailsAddress}"
                         android:textColor="@color/white"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="#123, 8th floor,  street 4, Los Angeles, CA"
+                        android:text="@{vm.tvFavCityAddress}"
                         android:textColor="@color/white"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toTopOf="@id/tvFavDetailsAddress"
@@ -191,6 +189,7 @@
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:onClick="@{vm.onClicks}"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:src="@drawable/like_unfilled_image"
                         app:layout_constraintEnd_toStartOf="@+id/tvFavDetailsLikeCounts"
@@ -206,7 +205,7 @@
                         android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/inter_medium"
                         android:paddingVertical="@dimen/_1sdp"
-                        android:text="0"
+                        android:text="@={vm.LikesCount}"
                         android:textColor="@color/tool_bar_black_color"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsLike"
@@ -219,6 +218,7 @@
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_5sdp"
+                        android:onClick="@{vm.onClicks}"
                         android:src="@drawable/ic_thumbs_down"
                         app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsLike"
                         app:layout_constraintStart_toEndOf="@id/tvFavDetailsLikeCounts"
@@ -233,7 +233,7 @@
                         android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/inter_medium"
                         android:paddingVertical="@dimen/_1sdp"
-                        android:text="0"
+                        android:text="@={vm.DisLikesCount}"
                         android:textColor="@color/tool_bar_black_color"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toBottomOf="@id/ivFavDetailsDislike"
@@ -243,16 +243,14 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ivFavTotalLikedCounts"
-                        android:layout_width="@dimen/_30sdp"
+                        android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_margin="@dimen/_5sdp"
-                        android:visibility="gone"
-                        android:onClick="@{vm::onClicks}"
                         android:padding="@dimen/_5sdp"
+                        android:visibility="visible"
                         android:src="@drawable/ic_heart_filled_icon"
                         app:layout_constraintStart_toEndOf="@id/tvFavDetailsDisLikeCount"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvFavHeartFilledCounts"
@@ -284,6 +282,7 @@
                         app:layout_constraintTop_toTopOf="@id/ivFavDetailsLike" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvFavDetailsName"
                     android:layout_width="wrap_content"
@@ -292,7 +291,8 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/inter_medium"
                     android:paddingVertical="@dimen/_1sdp"
-                    android:text="Vikas Panchal"
+                    android:text="@={vm.username}"
+
                     android:textColor="@color/light_black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -307,11 +307,14 @@
                     android:layout_marginBottom="@dimen/_15sdp"
                     app:layout_constraintTop_toBottomOf="@+id/tvFavDetailsName">
                     <!--layout Description 1-->
+
+                    // description 1
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clVEditProDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_10sdp"
+                        android:visibility="gone"
                         android:background="@drawable/forgot_email_bg"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -319,10 +322,11 @@
                             android:id="@+id/etVEditProDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:fontFamily="@font/inter_medium"
-                            android:hint="Lorem ipsum dolor sit amet,consectetur adipiscing elit. Quis in dolor euismod suscipit nibh facilisi.Tincidunt tristique tortor sit arcu sed ac malesuada. In ullamcorper varius senectus sagittis dapibus sed. Tellus dui dolor enim lorem."
                             android:textColorHint="@color/light_black"
                             android:textSize="16sp"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -337,6 +341,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:visibility="gone"
                         app:cardCornerRadius="@dimen/_10sdp"
                         app:cardElevation="@dimen/_5sdp"
                         app:layout_constraintTop_toBottomOf="@+id/clVEditProDescription">
@@ -351,14 +356,16 @@
 
                     <!--layout Description 2-->
 
-
+                    //// visibility = gone
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clFavOfDesc2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_margin="@dimen/_10sdp"
                         android:background="@drawable/forgot_email_bg"
                         app:layout_constraintTop_toBottomOf="@id/ivFavOfDesc1">
+
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvFavOfDesc2"
@@ -370,6 +377,7 @@
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--Recycler View (Videos ) -->
                     <androidx.recyclerview.widget.RecyclerView
@@ -387,9 +395,10 @@
                         tools:listitem="@layout/view_profile_videos_list" />
 
                     <!--RecyclerView For Images  -->
+
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvImages"
-                        setRecyclerAdapter="@{vm.imagesAdapter}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -400,11 +409,13 @@
                         tools:layout_editor_absoluteX="13dp"
                         tools:listitem="@layout/view_profile_images_list" />
 
+                    /// 3 des..
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clFavOfDesc3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_10sdp"
+                        android:visibility="gone"
                         android:background="@drawable/forgot_email_bg"
                         app:layout_constraintTop_toBottomOf="@id/rvImages">
                         <androidx.appcompat.widget.AppCompatTextView
@@ -417,16 +428,19 @@
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvFavDetails"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_200sdp"
                         android:layout_margin="@dimen/_10sdp"
                         app:cardCornerRadius="@dimen/_10sdp"
+                        android:visibility="gone"
                         app:cardElevation="@dimen/_5sdp"
-
                         app:layout_constraintTop_toBottomOf="@+id/clFavOfDesc3">
+
                         <fragment
                             android:id="@+id/mapFragmentViewProfile"
                             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -436,6 +450,7 @@
                             android:layout_marginBottom="@dimen/_15sdp"
                             app:layout_constraintTop_toBottomOf="@+id/ivFavOfDe" />
                     </androidx.cardview.widget.CardView>
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnBookingProfile"
                         android:layout_width="match_parent"
